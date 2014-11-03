@@ -8,30 +8,49 @@ class Tri {
   PVector centerPos ;
   int x, y, yinc;
 
+  float twothird = 2.0/3.0;
+  
+  EyeDropper ed;
 
-  Tri (float x1, float y1, float x2, float y2, float x3, float y3) {  
-    //positions = { x1, y1, x2, y2, x3, y3 };
+
+  int carreSize = 10;
+  
+  Tri (PImage baseImg, float x1, float y1, float x2, float y2, float x3, float y3) {  
+    //a
     positions[0] = x1;
     positions[1] = y1;
+    //b
     positions[2] = x2;
     positions[3] = y2;
+    //c
     positions[4] = x3;
     positions[5] = y3;
 
+    ed = new EyeDropper(baseImg);
 
-    centerPos = new PVector(int(round((x1+x2+x3)/3)), int(round((y1+y2+y3)/3)));
+
+    PVector bc = new PVector(
+                positions[2]+(positions[4]-positions[2])/2, 
+                  positions[3]+(positions[5]-positions[3])/2);
+                  
+    centerPos = new PVector(int( positions[0]+(bc.x-positions[0])*twothird), int(positions[1]+(bc.y-positions[1])*twothird) );
+
+
+    triangleColor = ed.getColor(int(centerPos.x), int(centerPos.y),carreSize);
   } 
 
   void update() { 
     fill(triangleColor);
-
     triangle(positions[0], positions[1], positions[2], positions[3], positions[4], positions[5]);
+
+    ed.update();
   }
 
   void getColor()
   {
 
-    //triangleColor = get(int(centerPos.x),int(centerPos.y));
+    // triangleColor = ed.getColor(int(centerPos.x),int(centerPos.y),5);
+    //triangleColor = get();
   }
 } 
 

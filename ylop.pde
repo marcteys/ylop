@@ -1,14 +1,11 @@
 
-Tri trii = new Tri(0, 0, 50, 50, 100, 100);
-
 
 PVector[] savedMouse = new PVector[3];
 int step  = 0;
 
 ArrayList<PVector> allMousePos;
 ArrayList<Tri> triangles;
-
-PImage myImage;
+PImage baseImage;
 
 
 void setup() {  // setup() runs once
@@ -19,18 +16,17 @@ void setup() {  // setup() runs once
   allMousePos = new ArrayList<PVector>();
   triangles = new ArrayList<Tri>();
 
-  myImage = loadImage("test.jpg");
+  baseImage = loadImage("test.jpg");
 }
 
 void draw() {
   background(255);
-  image(myImage, 0, 0);
+  image(baseImage, 0, 0);
  
 
   //triangle creation
   fill(255);
   noStroke();
-  trii.update();
 
   if (step == 0)
   {
@@ -85,8 +81,7 @@ void mousePressed() {
 
   if (step == 2)
   {
-    Tri newTri = new Tri(savedMouse[0].x, savedMouse[0].y, savedMouse[1].x, savedMouse[1].y, savedMouse[2].x, savedMouse[2].y);
-    newTri.getColor();
+    Tri newTri = new Tri(baseImage, savedMouse[0].x, savedMouse[0].y, savedMouse[1].x, savedMouse[1].y, savedMouse[2].x, savedMouse[2].y);
     triangles.add(newTri);
     step = 0 ;
   } else
