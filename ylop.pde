@@ -8,18 +8,36 @@ int step  = 0;
 ArrayList<PVector> allMousePos;
 ArrayList<Tri> triangles;
 
+PImage myImage;
+
 
 void setup() {  // setup() runs once
-  size(1000, 1000);
+  size(325, 600);
   frameRate(30);
   smooth();
 
   allMousePos = new ArrayList<PVector>();
   triangles = new ArrayList<Tri>();
+
+  myImage = loadImage("test.jpg");
 }
 
 void draw() {  // draw() loops forever, until stopped
-  background(204);
+  background(255);
+
+
+  image(myImage, 0, 0);
+  /*
+  color c = get(25, 25);
+   fill(c);
+   noStroke();
+   rect(25, 25, 50, 50);
+   
+   */
+
+
+
+  //triangle creation
   fill(255);
   noStroke();
   trii.update();
@@ -31,7 +49,7 @@ void draw() {  // draw() loops forever, until stopped
     stroke(255, 20, 20);
     strokeWeight(1);
     line(savedMouse[step-1].x, savedMouse[step-1].y, mouseX, mouseY);
-  } else if (step ==2)
+  } else if (step == 2)
   {
     stroke(255, 20, 20);
     strokeWeight(1);
@@ -40,14 +58,12 @@ void draw() {  // draw() loops forever, until stopped
   }
 
 
-
-//update triangles
-  stroke(255, 255,255,255);
+  //update triangles
+  stroke(255, 255, 255, 255);
   strokeWeight(1);
   fill(255, 20, 20);
   updateTriangles();
   ellipse(mouseX, mouseY, 5, 5);
-
 }
 
 
@@ -66,25 +82,25 @@ void mousePressed() {
 
   savedMouse[step] =  new PVector(mouseX, mouseY);
   allMousePos.add(new PVector(mouseX, mouseY));
-  
+
   //calculate if there is a point near
-  
-  for(int i = allMousePos.size()-1; i>= 0 ; i--)
+
+  for (int i = allMousePos.size ()-1; i>= 0; i--)
   {
     PVector mousePos = allMousePos.get(i);
-    if(minPoint(mousePos, savedMouse[step]))
+    if (minPoint(mousePos, savedMouse[step]))
     {
-     savedMouse[step] =  mousePos;
+      savedMouse[step] =  mousePos;
     }
-    
   }
-  
+
   if (step == 2)
   {
-    triangles.add(new Tri(savedMouse[0].x, savedMouse[0].y, savedMouse[1].x, savedMouse[1].y, savedMouse[2].x, savedMouse[2].y));
+    Tri newTri = new Tri(savedMouse[0].x, savedMouse[0].y, savedMouse[1].x, savedMouse[1].y, savedMouse[2].x, savedMouse[2].y);
+    newTri.getColor();
+    triangles.add(newTri);
     step = 0 ;
-  }
-  else
+  } else
   {
     step++;
   }
@@ -94,15 +110,12 @@ void mousePressed() {
 boolean minPoint(PVector p1, PVector p2)
 {
   boolean minpoint = false;
-  
-  if(p1.dist(p2) < 20)
+
+  if (p1.dist(p2) < 10)
   {
-    
+
     minpoint = true;
   }
   return minpoint;
-  
 }
-
-
 
