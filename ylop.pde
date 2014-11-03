@@ -22,20 +22,10 @@ void setup() {  // setup() runs once
   myImage = loadImage("test.jpg");
 }
 
-void draw() {  // draw() loops forever, until stopped
+void draw() {
   background(255);
-
-
   image(myImage, 0, 0);
-  /*
-  color c = get(25, 25);
-   fill(c);
-   noStroke();
-   rect(25, 25, 50, 50);
-   
-   */
-
-
+ 
 
   //triangle creation
   fill(255);
@@ -56,7 +46,6 @@ void draw() {  // draw() loops forever, until stopped
     line(savedMouse[step-1].x, savedMouse[step-1].y, savedMouse[step-2].x, savedMouse[step-2].y);
     line(savedMouse[step-1].x, savedMouse[step-1].y, mouseX, mouseY);
   }
-
 
   //update triangles
   stroke(255, 255, 255, 255);
