@@ -9,12 +9,14 @@ class Tri {
   int x, y, yinc;
 
   float twothird = 2.0/3.0;
-  
+
   EyeDropper ed;
 
+  public boolean debugColor = false;
+  public boolean trianglesOnly = false;
 
   int carreSize = 10;
-  
+
   Tri (PImage baseImg, float x1, float y1, float x2, float y2, float x3, float y3) {  
     //a
     positions[0] = x1;
@@ -30,20 +32,27 @@ class Tri {
 
 
     PVector bc = new PVector(
-                positions[2]+(positions[4]-positions[2])/2, 
-                  positions[3]+(positions[5]-positions[3])/2);
-                  
+    positions[2]+(positions[4]-positions[2])/2, 
+    positions[3]+(positions[5]-positions[3])/2);
+
     centerPos = new PVector(int( positions[0]+(bc.x-positions[0])*twothird), int(positions[1]+(bc.y-positions[1])*twothird) );
 
-
-    triangleColor = ed.getColor(int(centerPos.x), int(centerPos.y),carreSize);
+    triangleColor = ed.getColor(int(centerPos.x), int(centerPos.y), carreSize);
   } 
 
   void update() { 
     pushStyle();
-    fill(triangleColor);
-    stroke(255);
+    if (trianglesOnly) {
+      noFill();
+      stroke(0);
+    }
+    else {
+      fill(triangleColor);
+      stroke(255);
+    }
     triangle(positions[0], positions[1], positions[2], positions[3], positions[4], positions[5]);
+    if (debugColor) ed.debug = true;
+    else if (!debugColor) ed.debug = false;
     ed.update();
     popStyle();
   }

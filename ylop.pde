@@ -128,6 +128,15 @@ void updateTriangles()
   {
     Tri tri = triangles.get(i);
     tri.update();
+    
+    //debug stuff
+    
+    if(displayColor) tri.debugColor = true;
+    else tri.debugColor = false;
+    
+    if(trianglesOnly) tri.trianglesOnly = true;
+    else tri.trianglesOnly = false;
+    
   }
 }
 
