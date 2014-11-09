@@ -31,8 +31,8 @@ float minDistCollapse = 15;
 //values visual
 public int epicenterX = 150;
 public int epicenterY = 200;
-public int alphaDist = 100;
-public int randomAlpha = 20;
+public int alphaDist = 20;
+public int randomAlpha = 50;
 
 
 //end settings
@@ -56,7 +56,7 @@ void setup() {  // setup() runs once
 
   // CP5
   cp5 = new ControlP5(this);
-  cf = addControlFrame("Settings", 200, 600);
+  cf = addControlFrame("Settings", 200, 629);
 }
 
 void draw() {
@@ -94,7 +94,7 @@ void draw() {
     fill(0, 200, 140);
     ellipse(epicenterX, epicenterY, 5, 5);
     fill(0, 200, 140, 30);
-    ellipse(epicenterX, epicenterY, alphaDist, alphaDist);
+    ellipse(epicenterX, epicenterY, alphaDist*2, alphaDist*2);
     popStyle();
   }
 }
@@ -147,7 +147,6 @@ void updateTriangles()
   {
     Tri tri = triangles.get(i);
     tri.update();
-    tri.distanceFromEpicenter = dist(tri.centerPos.x, tri.centerPos.y, epicenterX, epicenterY);
 
     //debug stuff
 

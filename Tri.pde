@@ -19,6 +19,11 @@ class Tri {
 
   float distanceFromEpicenter = 10000;
 
+
+ long randSeed = (long)random(0, 5000); 
+
+
+
   Tri (PImage baseImg, float x1, float y1, float x2, float y2, float x3, float y3) {  
     //a
     positions[0] = x1;
@@ -48,7 +53,9 @@ class Tri {
       stroke(0);
     }
     else {
-      fill(triangleColor,triangleAlpha());
+      fill(triangleColor,triangleAlpha());/*
+      stroke(255,0,0);
+      line(epicenterX,epicenterY,centerPos.x,centerPos.y);*/
       stroke(255);
     }
     triangle(positions[0], positions[1], positions[2], positions[3], positions[4], positions[5]);
@@ -62,13 +69,18 @@ class Tri {
   
   float triangleAlpha()
   {
-   float alpha;
-    alpha = map(distanceFromEpicenter + alphaDist,0,300,255,0);
+    float alpha;
+    
+    float distanceFromEpicenter =  dist(centerPos.x, centerPos.y, epicenterX, epicenterY);
+    alpha = constrain(map(distanceFromEpicenter,0+alphaDist,50+alphaDist,255,0),0,255);
+
+    //adding random
+
+    randomSeed(randSeed);
+    float rand = random(-randomAlpha/3, randomAlpha);
+    alpha = constrain(alpha+rand, 0, 255);
+
    return alpha; 
   }
 
-} 
-
-
-
-
+}

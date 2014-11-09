@@ -70,7 +70,7 @@ public class ControlFrame extends PApplet {
     cp5.addSlider("X").setPosition(10, 30).setRange(0, 1000).setValue(0).setGroup(g3).plugTo(parent, "epicenterX");
     cp5.addSlider("Y").setPosition(10, 50).setRange(0, 1000).setValue(0).setGroup(g3).plugTo(parent, "epicenterY");
     cp5.addSlider("alphaDist").setPosition(10, 70).setRange(0, 500).setValue(100).setGroup(g3).plugTo(parent, "alphaDist");
-    cp5.addSlider("randomAlpha").setPosition(10, 90).setRange(0, 30).setValue(20).setGroup(g3).plugTo(parent, "randomAlpha");
+    cp5.addSlider("randomAlpha").setPosition(10, 90).setRange(0, 255).setValue(50).setGroup(g3).plugTo(parent, "randomAlpha");
   }
 
   public void draw() {
@@ -96,4 +96,3 @@ public class ControlFrame extends PApplet {
 
   Object parent;
 }
-
