@@ -37,10 +37,10 @@ public int randomAlpha = 50;
 
 //end settings
 
-PVector[] savedMouse = new PVector[3];
+int[] savedIds = new int[3];
 int step  = 0;
 
-ArrayList<PVector> allMousePos;
+public ArrayList<PVector> allMousePos;
 ArrayList<Tri> triangles;
 PImage baseImage;
 
@@ -113,16 +113,16 @@ void trianglesCreation()
   {
     stroke(255, 20, 20);
     strokeWeight(1);
-    line(savedMouse[step-1].x, savedMouse[step-1].y, mouseX, mouseY);
+    line(allMousePos.get(savedIds[step-1]).x, allMousePos.get(savedIds[step-1]).y, mouseX, mouseY);
   } 
   else if (step == 2)
   {
     stroke(255, 20, 20);
     strokeWeight(1);
-    line(savedMouse[step-1].x, savedMouse[step-1].y, savedMouse[step-2].x, savedMouse[step-2].y);
-    line(savedMouse[step-1].x, savedMouse[step-1].y, mouseX, mouseY);
+    line(allMousePos.get(savedIds[step-1]).x, allMousePos.get(savedIds[step-1]).y, allMousePos.get(savedIds[step-2]).x, allMousePos.get(savedIds[step-2]).y);
+    line(allMousePos.get(savedIds[step-1]).x, allMousePos.get(savedIds[step-1]).y, mouseX, mouseY);
     fill(255, 20, 20, 100);
-    triangle(savedMouse[step-1].x, savedMouse[step-1].y, savedMouse[step-2].x, savedMouse[step-2].y, mouseX, mouseY);
+    triangle(allMousePos.get(savedIds[step-1]).x, allMousePos.get(savedIds[step-1]).y, allMousePos.get(savedIds[step-2]).x, allMousePos.get(savedIds[step-2]).y, mouseX, mouseY);
   }
   popStyle();
 }
@@ -161,24 +161,33 @@ void updateTriangles()
 
 void mousePressed() {
   if (mouseButton == LEFT) {
-    savedMouse[step] =  new PVector(mouseX, mouseY);
-    allMousePos.add(new PVector(mouseX, mouseY));
 
+    PVector newMousePos = new PVector(mouseX,mouseY);
+
+    boolean isNear = false;
     //calculate if there is a point near
     for (int i = allMousePos.size ()-1; i>= 0; i--)
     {
       PVector mousePos = allMousePos.get(i);
-      if (minPoint(mousePos, savedMouse[step]))
+      if (minPoint(mousePos, newMousePos))
       {
-        savedMouse[step] =  mousePos;
-        allMousePos.set(allMousePos.size()-1, mousePos);
+        savedIds[step] =  i;
+        isNear = true;
       }
     }
+    //if it's not near, we add a new point in the canvas
+    if(!isNear)
+    {
+     allMousePos.add(newMousePos);
+    savedIds[step] =  allMousePos.size()-1;
+    }
+
     if (step == 2)
     {
-      Tri newTri = new Tri(baseImage, savedMouse[0].x, savedMouse[0].y, savedMouse[1].x, savedMouse[1].y, savedMouse[2].x, savedMouse[2].y);
+      Tri newTri = new Tri(baseImage, savedIds);
       triangles.add(newTri);
       step = 0 ;
+      savedIds = new int[3];
     } 
     else
     {
@@ -190,7 +199,7 @@ void mousePressed() {
 
 void fakeTris()
 {
-
+/*
   int marginX = 100;
   int marginY = 100;
 
@@ -203,10 +212,10 @@ void fakeTris()
       allMousePos.add(new PVector(x-30, y+15));
       allMousePos.add(new PVector(x-30, y-15));
 
-      Tri newTri = new Tri(baseImage, x, y, x-30, y+15, x-30, y-15);
-      triangles.add(newTri);
+   //   Tri newTri = new Tri(baseImage, x, y, x-30, y+15, x-30, y-15);
+    //  triangles.add(newTri);
     }
-  }
+  }*/
 }
 
 boolean minPoint(PVector p1, PVector p2)

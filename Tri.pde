@@ -1,11 +1,8 @@
 class Tri { 
 
-  float[] positions = { 
-    0, 0, 0, 0, 0, 0
-  };
-
   color triangleColor;
- public PVector centerPos ;
+  PVector centerPos ;
+
   int x, y, yinc;
 
   float twothird = 2.0/3.0;
@@ -15,33 +12,26 @@ class Tri {
   public boolean debugColor = false;
   public boolean trianglesOnly = false;
 
-   int carreSize = 10;
+  int carreSize = 10;
 
   float distanceFromEpicenter = 10000;
 
+  long randSeed = (long)random(0, 5000); 
 
- long randSeed = (long)random(0, 5000); 
+  int[] triPoints = new int[6];
 
+  Tri (PImage baseImg, int[] points) {  
 
-
-  Tri (PImage baseImg, float x1, float y1, float x2, float y2, float x3, float y3) {  
-    //a
-    positions[0] = x1;
-    positions[1] = y1;
-    //b
-    positions[2] = x2;
-    positions[3] = y2;
-    //c
-    positions[4] = x3;
-    positions[5] = y3;
+    
+    triPoints = points;
 
     ed = new EyeDropper(baseImg);
 
     PVector bc = new PVector(
-    positions[2]+(positions[4]-positions[2])/2, 
-    positions[3]+(positions[5]-positions[3])/2);
+    allMousePos.get(points[1]).x+(allMousePos.get(points[2]).x-allMousePos.get(points[1]).x)/2, 
+    allMousePos.get(points[1]).y+(allMousePos.get(points[2]).y-allMousePos.get(points[1]).y)/2);
 
-    centerPos = new PVector(int( positions[0]+(bc.x-positions[0])*twothird), int(positions[1]+(bc.y-positions[1])*twothird) );
+    centerPos = new PVector(int( allMousePos.get(points[0]).x+(bc.x-allMousePos.get(points[0]).x)*twothird), int(allMousePos.get(points[0]).y+(bc.y-allMousePos.get(points[0]).y)*twothird) );
 
     triangleColor = ed.getColor(int(centerPos.x), int(centerPos.y), carreSize);
   } 
@@ -58,15 +48,18 @@ class Tri {
       line(epicenterX,epicenterY,centerPos.x,centerPos.y);*/
       stroke(255);
     }
-    triangle(positions[0], positions[1], positions[2], positions[3], positions[4], positions[5]);
+    triangle(
+      allMousePos.get(triPoints[0]).x, allMousePos.get(triPoints[0]).y,
+      allMousePos.get(triPoints[1]).x, allMousePos.get(triPoints[1]).y,
+      allMousePos.get(triPoints[2]).x, allMousePos.get(triPoints[2]).y);
+
     if (debugColor) ed.debug = true;
     else if (!debugColor) ed.debug = false;
+
     ed.update();
     popStyle();
   }
 
-
-  
   float triangleAlpha()
   {
     float alpha;
