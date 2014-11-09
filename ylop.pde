@@ -29,8 +29,8 @@ int mode = 0;
 float minDistCollapse = 15;
 
 //values visual
-public int epicenterX = 0;
-public int epicenterY = 0;
+public int epicenterX = 150;
+public int epicenterY = 200;
 public int alphaDist = 100;
 public int randomAlpha = 20;
 
@@ -64,6 +64,7 @@ void draw() {
   if (!setPosition) {
     frame.setLocation(310, 100);
     setPosition = true;
+    fakeTris();
   }
 
   background(255);
@@ -86,14 +87,14 @@ void draw() {
 
   //debug
   if (displayCircle) debugCircles();
-  if(displayEpicenter)
+  if (displayEpicenter)
   {
     pushStyle();
     noStroke();
     fill(0, 200, 140);
-    ellipse(epicenterX,epicenterY, 5,5);
-    fill(0, 200, 140,30);
-    ellipse(epicenterX,epicenterY, alphaDist,alphaDist);
+    ellipse(epicenterX, epicenterY, 5, 5);
+    fill(0, 200, 140, 30);
+    ellipse(epicenterX, epicenterY, alphaDist, alphaDist);
     popStyle();
   }
 }
@@ -146,8 +147,8 @@ void updateTriangles()
   {
     Tri tri = triangles.get(i);
     tri.update();
-    tri.distanceFromEpicenter = dist(tri.centerPos.x,tri.centerPos.y,epicenterX,epicenterY);
-    
+    tri.distanceFromEpicenter = dist(tri.centerPos.x, tri.centerPos.y, epicenterX, epicenterY);
+
     //debug stuff
 
     if (displayColor) tri.debugColor = true;
@@ -185,9 +186,29 @@ void mousePressed() {
       step++;
     }
   }
-
 }
 
+
+void fakeTris()
+{
+
+  int marginX = 100;
+  int marginY = 100;
+
+  for (int i =0; i < 6; i++ ) {
+    for (int j =0; j < 10; j++ ) {
+
+      int x = (marginX + (i*30));
+      int y = marginY + (j*30);
+      allMousePos.add(new PVector(x, y));
+      allMousePos.add(new PVector(x-30, y+15));
+      allMousePos.add(new PVector(x-30, y-15));
+
+      Tri newTri = new Tri(baseImage, x, y, x-30, y+15, x-30, y-15);
+      triangles.add(newTri);
+    }
+  }
+}
 
 boolean minPoint(PVector p1, PVector p2)
 {
