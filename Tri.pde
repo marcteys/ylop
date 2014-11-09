@@ -40,10 +40,12 @@ class Tri {
   } 
 
   void update() { 
+    pushStyle();
     fill(triangleColor);
+    stroke(255);
     triangle(positions[0], positions[1], positions[2], positions[3], positions[4], positions[5]);
-
     ed.update();
+    popStyle();
   }
 
   void getColor()
