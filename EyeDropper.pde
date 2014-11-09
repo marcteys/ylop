@@ -14,10 +14,8 @@ class EyeDropper {
 
 
   EyeDropper (PImage baseImage) {
-
     baseImg = baseImage;
   } 
-
 
   color getColor(int posX, int posY, int size)
   {
@@ -43,9 +41,7 @@ class EyeDropper {
       }
     }
 
-
     calculatedCol = color ( tr/nbrPixels, tg/nbrPixels, tb/nbrPixels);
-
 
     tr = 0;
     tg = 0;

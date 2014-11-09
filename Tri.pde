@@ -5,7 +5,7 @@ class Tri {
   };
 
   color triangleColor;
-  PVector centerPos ;
+ public PVector centerPos ;
   int x, y, yinc;
 
   float twothird = 2.0/3.0;
@@ -15,7 +15,9 @@ class Tri {
   public boolean debugColor = false;
   public boolean trianglesOnly = false;
 
-  int carreSize = 10;
+   int carreSize = 10;
+
+  float distanceFromEpicenter = 10000;
 
   Tri (PImage baseImg, float x1, float y1, float x2, float y2, float x3, float y3) {  
     //a
@@ -29,7 +31,6 @@ class Tri {
     positions[5] = y3;
 
     ed = new EyeDropper(baseImg);
-
 
     PVector bc = new PVector(
     positions[2]+(positions[4]-positions[2])/2, 
@@ -47,7 +48,7 @@ class Tri {
       stroke(0);
     }
     else {
-      fill(triangleColor);
+      fill(triangleColor,triangleAlpha());
       stroke(255);
     }
     triangle(positions[0], positions[1], positions[2], positions[3], positions[4], positions[5]);
@@ -57,11 +58,17 @@ class Tri {
     popStyle();
   }
 
-  void getColor()
-  {
 
-    // triangleColor = ed.getColor(int(centerPos.x),int(centerPos.y),5);
-    //triangleColor = get();
+  
+  float triangleAlpha()
+  {
+   float alpha;
+    alpha = map(distanceFromEpicenter + alphaDist,0,300,255,0);
+   return alpha; 
   }
+
 } 
+
+
+
 

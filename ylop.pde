@@ -16,6 +16,8 @@ boolean setPosition = false;
 public boolean displayCircle = false;
 boolean displayColor = false;
 boolean trianglesOnly = false;
+boolean displayEpicenter = false;
+
 
 // modes
 boolean drawTriangle = true;
@@ -23,8 +25,15 @@ boolean moveCircle = false;
 boolean deleteTriangle = false;
 int mode = 0;
 
-// values
+// values construction
 float minDistCollapse = 15;
+
+//values visual
+public int epicenterX = 0;
+public int epicenterY = 0;
+public int alphaDist = 100;
+public int randomAlpha = 20;
+
 
 //end settings
 
@@ -43,9 +52,7 @@ void setup() {  // setup() runs once
 
   allMousePos = new ArrayList<PVector>();
   triangles = new ArrayList<Tri>();
-
   baseImage = loadImage("test.jpg");
-
 
   // CP5
   cp5 = new ControlP5(this);
@@ -62,11 +69,11 @@ void draw() {
   background(255);
   image(baseImage, 0, 0);
 
+  //mode
   trianglesCreation();
 
   //update triangles
   updateTriangles();
-
 
   // draw cursor
   pushStyle();
@@ -77,7 +84,18 @@ void draw() {
   ellipse(mouseX, mouseY, minDistCollapse, minDistCollapse);
   popStyle();
 
+  //debug
   if (displayCircle) debugCircles();
+  if(displayEpicenter)
+  {
+    pushStyle();
+    noStroke();
+    fill(0, 200, 140);
+    ellipse(epicenterX,epicenterY, 5,5);
+    fill(0, 200, 140,30);
+    ellipse(epicenterX,epicenterY, alphaDist,alphaDist);
+    popStyle();
+  }
 }
 
 
@@ -128,46 +146,46 @@ void updateTriangles()
   {
     Tri tri = triangles.get(i);
     tri.update();
+    tri.distanceFromEpicenter = dist(tri.centerPos.x,tri.centerPos.y,epicenterX,epicenterY);
     
     //debug stuff
-    
-    if(displayColor) tri.debugColor = true;
+
+    if (displayColor) tri.debugColor = true;
     else tri.debugColor = false;
-    
-    if(trianglesOnly) tri.trianglesOnly = true;
+
+    if (trianglesOnly) tri.trianglesOnly = true;
     else tri.trianglesOnly = false;
-    
   }
 }
 
 
 void mousePressed() {
+  if (mouseButton == LEFT) {
+    savedMouse[step] =  new PVector(mouseX, mouseY);
+    allMousePos.add(new PVector(mouseX, mouseY));
 
-  savedMouse[step] =  new PVector(mouseX, mouseY);
-  allMousePos.add(new PVector(mouseX, mouseY));
-
-  //calculate if there is a point near
-
-  for (int i = allMousePos.size ()-1; i>= 0; i--)
-  {
-    PVector mousePos = allMousePos.get(i);
-    if (minPoint(mousePos, savedMouse[step]))
+    //calculate if there is a point near
+    for (int i = allMousePos.size ()-1; i>= 0; i--)
     {
-      savedMouse[step] =  mousePos;
-      allMousePos.set(allMousePos.size()-1, mousePos);
+      PVector mousePos = allMousePos.get(i);
+      if (minPoint(mousePos, savedMouse[step]))
+      {
+        savedMouse[step] =  mousePos;
+        allMousePos.set(allMousePos.size()-1, mousePos);
+      }
+    }
+    if (step == 2)
+    {
+      Tri newTri = new Tri(baseImage, savedMouse[0].x, savedMouse[0].y, savedMouse[1].x, savedMouse[1].y, savedMouse[2].x, savedMouse[2].y);
+      triangles.add(newTri);
+      step = 0 ;
+    } 
+    else
+    {
+      step++;
     }
   }
 
-  if (step == 2)
-  {
-    Tri newTri = new Tri(baseImage, savedMouse[0].x, savedMouse[0].y, savedMouse[1].x, savedMouse[1].y, savedMouse[2].x, savedMouse[2].y);
-    triangles.add(newTri);
-    step = 0 ;
-  } 
-  else
-  {
-    step++;
-  }
 }
 
 

@@ -1,5 +1,3 @@
-
-
 ControlFrame addControlFrame(String theName, int theWidth, int theHeight) {
   Frame f = new Frame(theName);
   ControlFrame p = new ControlFrame(this, theWidth, theHeight);
@@ -12,7 +10,6 @@ ControlFrame addControlFrame(String theName, int theWidth, int theHeight) {
   f.setVisible(true);
   return p;
 }
-
 
 
 public class ControlFrame extends PApplet {
@@ -47,32 +44,33 @@ public class ControlFrame extends PApplet {
           .addItem(g1)
             .addItem(g2)
               .addItem(g3)
-                .setItemHeight(80)
+                .setItemHeight(120)
                   ;
     accordion.open(0, 1,2);
-    accordion.setCollapseMode(Accordion.MULTI);
+    accordion.setCollapseMode(Accordion.MULTIPLES);
 
     cp5.addToggle("Display Circles").setPosition(10, 10).setSize(10, 10).setGroup(g1).plugTo(parent, "displayCircle");
     cp5.addToggle("Display Color").setPosition(10, 30).setSize(10, 10).setGroup(g1).plugTo(parent, "displayColor");
     cp5.addToggle("Triangles Only").setPosition(10, 50).setSize(10, 10).setGroup(g1).plugTo(parent, "trianglesOnly");
+    cp5.addToggle("Display Epicenter").setPosition(10, 70).setSize(10, 10).setGroup(g1).plugTo(parent, "displayEpicenter").setValue(true);
 
-    cp5.addRadioButton("radioButton")
-      .setPosition(10, 10)
-        .setSize(10, 10)
-          .setItemsPerRow(1)
-            .setSpacingRow(10)
+    cp5.addRadioButton("radioButton").setPosition(10, 10).setSize(10, 10).setItemsPerRow(1).setSpacingRow(10).setGroup(g2).plugTo(parent, "mode")
               .addItem("Draw Triangles", 0).activate(0)
                 .addItem("Move Circle", 1)
-                  .addItem("Delete Triangle", 2).setGroup(g2).plugTo(parent, "mode")
+                  .addItem("Delete Triangle", 2)
+                  .addItem("Set Epicenter", 3)
                     ;
 
-    cp5.addSlider("Min dist")
-      .setPosition(10, 10)
-        .setRange(0, 30)
-        .setValue(15)
-        .setGroup(g3)
-        .plugTo(parent, "minDistCollapse")
-          ;
+
+
+
+//settings 
+
+    cp5.addSlider("Min dist").setPosition(10, 10).setRange(0, 30).setValue(15).setGroup(g3).plugTo(parent, "minDistCollapse");
+    cp5.addSlider("X").setPosition(10, 30).setRange(0, 1000).setValue(0).setGroup(g3).plugTo(parent, "epicenterX");
+    cp5.addSlider("Y").setPosition(10, 50).setRange(0, 1000).setValue(0).setGroup(g3).plugTo(parent, "epicenterY");
+    cp5.addSlider("alphaDist").setPosition(10, 70).setRange(0, 500).setValue(100).setGroup(g3).plugTo(parent, "alphaDist");
+    cp5.addSlider("randomAlpha").setPosition(10, 90).setRange(0, 30).setValue(20).setGroup(g3).plugTo(parent, "randomAlpha");
   }
 
   public void draw() {
