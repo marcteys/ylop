@@ -6,10 +6,20 @@ import controlP5.*;
 
 private ControlP5 cp5;
 ControlFrame cf;
-int def;
+
 
 boolean setPosition = false;
 
+//booleans for debug
+  //display
+public boolean displayCircle = false;
+boolean displayColor = false;
+boolean trianglesOnly = false;
+  // modes
+boolean drawTriangle = true;
+boolean moveCircle = false;
+boolean deleteTriangle = false;
+int mode = 0;
 
 
 PVector[] savedMouse = new PVector[3];
@@ -32,14 +42,12 @@ void setup() {  // setup() runs once
   
   
   // CP5
-    cp5 = new ControlP5(this);
-
-  cf = addControlFrame("Debug", 200,200);
+  cp5 = new ControlP5(this);
+  cf = addControlFrame("Debug", 200,600);
   
 }
 
 void draw() {
-  
   // CP5 set position
    if (!setPosition) {
     frame.setLocation(310, 100);
@@ -66,6 +74,8 @@ void draw() {
     strokeWeight(1);
     line(savedMouse[step-1].x, savedMouse[step-1].y, savedMouse[step-2].x, savedMouse[step-2].y);
     line(savedMouse[step-1].x, savedMouse[step-1].y, mouseX, mouseY);
+    fill(255, 20, 20,100);
+    triangle(savedMouse[step-1].x, savedMouse[step-1].y, savedMouse[step-2].x, savedMouse[step-2].y, mouseX,mouseY);
   }
 
   //update triangles
@@ -143,21 +153,73 @@ ControlFrame addControlFrame(String theName, int theWidth, int theHeight) {
 }
 
 
-// the ControlFrame class extends PApplet, so we 
-// are creating a new processing applet inside a
-// new frame with a controlP5 object loaded
+
 public class ControlFrame extends PApplet {
 
   int w, h;
 
   int abc = 100;
-  
+  Accordion accordion;
   public void setup() {
     size(w, h);
     frameRate(25);
     cp5 = new ControlP5(this);
-    cp5.addSlider("abc").setRange(0, 255).setPosition(10,10);
-    cp5.addSlider("def").plugTo(parent,"def").setRange(0, 255).setPosition(10,30);
+      Group g1 = cp5.addGroup("Debug ")
+                .setPosition(10,20)
+                .setSize(173,50)
+                .setBackgroundColor(color(255,50))
+                ;
+     Group g2 = cp5.addGroup("Mode")
+                .setPosition(10,70)
+                .setSize(173,50)
+                .setBackgroundColor(color(255,50))
+                ;
+                
+                
+ accordion = cp5.addAccordion("acc")
+                 .setPosition(10,10)
+                 .setWidth(173)
+                 .addItem(g1)
+                 .addItem(g2).setItemHeight(80)
+                 ;
+                   accordion.open(0,1);
+  accordion.setCollapseMode(Accordion.MULTI);
+
+                     /*
+     boolean displayCircle = false;
+boolean displayColor = false;
+boolean trianglesOnly = false
+  // modes
+boolean drawTriangle = true;
+boolean moveCircle = false;
+boolean deleteTriangle =false;
+*/
+                
+     /*                
+    cp5.addSlider("abc").setRange(0, 255).setPosition(10,10).setGroup(g1);
+    cp5.addSlider("def").plugTo(parent,"def").setRange(0, 255).setPosition(10,30).setGroup(g1);
+    */
+      cp5.addToggle("Display Circles").setPosition(10,10).setSize(10,10).setGroup(g1).plugTo(parent,"displayCircle");
+      cp5.addToggle("Display Color").setPosition(10,30).setSize(10,10).setGroup(g1).plugTo(parent,"displayColor");
+      cp5.addToggle("Triangles Only").setPosition(10,50).setSize(10,10).setGroup(g1).plugTo(parent,"trianglesOnly");
+      
+      cp5.addRadioButton("radioButton")
+         .setPosition(10,10)
+         .setSize(10,10)
+         .setItemsPerRow(1)
+         .setSpacingRow(10)
+         .addItem("Draw Triangles",0)
+         .addItem("Move Circle",1)
+         .addItem("Delete Triangle",2).setGroup(g2).plugTo(parent,"mode")
+         
+         ;
+         
+      /*
+      cp5.addToggle("Draw Triangles").setPosition(10,70).setSize(10,10).setGroup(g1).plugTo(parent,"drawTriangle").setValue(true);
+      cp5.addToggle("Move Circle").setPosition(10,90).setSize(10,10).setGroup(g1).plugTo(parent,"moveCircle");
+      cp5.addToggle("Delete Triangle").setPosition(10,110).setSize(10,10).setGroup(g1).plugTo(parent,"deleteTriangle");
+                */
+                
   }
 
   public void draw() {
