@@ -62,7 +62,7 @@ public class ControlFrame extends PApplet {
 
 
 
-    cp5.addToggle("Display Circles").setPosition(10, 10).setSize(10, 10).setGroup(g1).plugTo(parent, "displayCircle").setValue(false);
+    cp5.addToggle("Display Circles").setPosition(10, 10).setSize(10, 10).setGroup(g1).plugTo(parent, "displayCircle").setValue(true);
     cp5.addToggle("Display Color").setPosition(10, 30).setSize(10, 10).setGroup(g1).plugTo(parent, "displayColor");
     cp5.addToggle("Triangles Only").setPosition(10, 50).setSize(10, 10).setGroup(g1).plugTo(parent, "trianglesOnly");
     cp5.addToggle("Display Epicenter").setPosition(10, 70).setSize(10, 10).setGroup(g1).plugTo(parent, "displayEpicenter").setValue(true);
@@ -97,19 +97,32 @@ public class ControlFrame extends PApplet {
   
     //save and load xml
   cp5.addButton("Save data").setValue(100).setPosition(10,10).setSize(150,20).setGroup(g4)
-  .addCallback(new CallbackListener() {
+    .addCallback(new CallbackListener() {
+        public void controlEvent(CallbackEvent event) {
+          if (event.getAction() == ControlP5.ACTION_RELEASED) {
+            SaveData();
+          }
+        }
+      });
+
+  cp5.addButton("Load Data ( data/points.xml ) ").setPosition(10,40).setSize(150,20).setGroup(g4)
+    .addCallback(new CallbackListener() {
       public void controlEvent(CallbackEvent event) {
         if (event.getAction() == ControlP5.ACTION_RELEASED) {
-          SaveData();
+          LoadData();
         }
       }
     });
 
-  cp5.addButton("Load Data ( data/points.xml ) ").setPosition(10,40).setSize(150,20).setGroup(g4);
 
-
-
-
+ cp5.addButton("Exit").setPosition(40,90).setSize(80,20).setGroup(g4)
+    .addCallback(new CallbackListener() {
+      public void controlEvent(CallbackEvent event) {
+        if (event.getAction() == ControlP5.ACTION_RELEASED) {
+          exit();
+        }
+      }
+    });
   }
 
 
@@ -133,9 +146,6 @@ void customize(DropdownList ddl) {
   ddl.setColorBackground(color(60));
   ddl.setColorActive(color(255, 128));
 }
-
-
-
 
 
   private ControlFrame() {

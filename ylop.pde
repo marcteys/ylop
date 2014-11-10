@@ -336,3 +336,72 @@ void mouseTriangleCreation()
 }
 
 
+
+void ResetCanvas()
+{
+
+
+triangles.clear();
+allPointsPos.clear();
+/*
+  for (int i = triangles.size ()-1; i >= 0; i--)
+  {
+   triangles.remove(i);
+    tri.update();
+
+    //debug stuff
+    if (displayColor) tri.debugColor = true;
+    else tri.debugColor = false;
+
+    if (trianglesOnly) tri.trianglesOnly = true;
+    else tri.trianglesOnly = false;
+  }
+
+
+  for (int i = allPointsPos.size ()-1; i>= 0; i--)
+    {
+      PVector pointPos = allPointsPos.get(i);
+      if (minPoint(pointPos, newpointPos))
+      {
+        savedIds[step] =  i;
+        isNear = true;
+      }
+    }
+*/
+}
+
+
+public void LoadData()
+{
+
+  ResetCanvas();
+  xml = loadXML("points.xml");
+  XML[] pointsChildren = xml.getChildren("points");
+  XML[] pointChildren = pointsChildren[0].getChildren("point");
+
+  allPointsPos = new ArrayList<PVector>();
+
+  for (int i = pointChildren.length-1; i >=0; i--) {
+    int id = pointChildren[i].getInt("id");
+    PVector position = new PVector(pointChildren[i].getFloat("x"), pointChildren[i].getFloat("y"));
+    allPointsPos.add(id,position);
+  }
+
+
+  XML[] trianglesChildren = xml.getChildren("triangles");
+  XML[] triangleChildren = trianglesChildren[0].getChildren("triangle");
+
+  triangles = new ArrayList<Tri>();
+  for (int i = triangleChildren.length-1; i >=0; i--) {
+    int id = triangleChildren[i].getInt("id");
+    int[] idPoints = new int[3];
+    idPoints[0] = triangleChildren[i].getInt("a");
+    idPoints[1] = triangleChildren[i].getInt("b");
+    idPoints[2] = triangleChildren[i].getInt("c");
+    Tri newTri = new Tri(baseImage, idPoints);
+    triangles.add(id,newTri);
+  }
+
+  println("XML loaded ");
+
+}

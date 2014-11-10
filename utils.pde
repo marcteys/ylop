@@ -3,7 +3,6 @@ boolean inside (int mousex, int mousey, float pointX, float pointY)
     return (mousex>pointX-5 && mousex<pointX+5 && mousey>pointY-5 && mousey<pointY+5);
 }
 
-
 boolean minPoint(PVector p1, PVector p2)
 {
 	boolean minpoint = false;
@@ -25,7 +24,7 @@ public void SaveData()
 
   xml = new XML("ylop");
 
-  XML memo = xml.addChild("customData");
+  XML memo = xml.addChild("settings");
   XML newChild = memo.addChild("name");
   newChild.setContent("My custom name baseImage");
 
@@ -56,12 +55,5 @@ public void SaveData()
   saveXML(xml, "/data/points-"+currentTime+".xml");
   saveXML(xml, "/data/points.xml");
   println("XML Saved.");
-
-}
-
-
-public void LoadData()
-{
-
 
 }
