@@ -23,7 +23,7 @@ boolean displayEpicenter = false;
 boolean drawTriangle = true;
 boolean moveCircle = false;
 boolean deleteTriangle = false;
-int mode = 0;
+public int mode = 0;
 
 // values construction
 float minDistCollapse = 15;
@@ -64,14 +64,24 @@ void draw() {
   if (!setPosition) {
     frame.setLocation(310, 100);
     setPosition = true;
-    fakeTris();
   }
 
   background(255);
   image(baseImage, 0, 0);
 
+  println("mode: "+mode);
   //mode
-  trianglesCreation();
+  switch(mode){
+      case 0 :
+          trianglesCreation();
+        break;
+      case 1 :
+        break;
+      case 2 :
+        break;
+      case 3 :
+        break;  
+    }
 
   //update triangles
   updateTriangles();
@@ -161,6 +171,26 @@ void updateTriangles()
 
 void mousePressed() {
   if (mouseButton == LEFT) {
+    switch(mode){
+      case 0 :
+        mouseTriangleCreation();
+        break;
+      case 1 :
+        break;
+      case 2 :
+        break;
+      case 3 :
+        break;  
+    }
+  }
+}
+
+
+
+
+// mode  0
+void mouseTriangleCreation()
+{
 
     PVector newMousePos = new PVector(mouseX,mouseY);
 
@@ -193,40 +223,4 @@ void mousePressed() {
     {
       step++;
     }
-  }
 }
-
-
-void fakeTris()
-{
-/*
-  int marginX = 100;
-  int marginY = 100;
-
-  for (int i =0; i < 6; i++ ) {
-    for (int j =0; j < 10; j++ ) {
-
-      int x = (marginX + (i*30));
-      int y = marginY + (j*30);
-      allMousePos.add(new PVector(x, y));
-      allMousePos.add(new PVector(x-30, y+15));
-      allMousePos.add(new PVector(x-30, y-15));
-
-   //   Tri newTri = new Tri(baseImage, x, y, x-30, y+15, x-30, y-15);
-    //  triangles.add(newTri);
-    }
-  }*/
-}
-
-boolean minPoint(PVector p1, PVector p2)
-{
-  boolean minpoint = false;
-
-  if (p1.dist(p2) < minDistCollapse)
-  {
-
-    minpoint = true;
-  }
-  return minpoint;
-}
-

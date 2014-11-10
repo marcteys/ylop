@@ -55,10 +55,10 @@ public class ControlFrame extends PApplet {
     cp5.addToggle("Display Epicenter").setPosition(10, 70).setSize(10, 10).setGroup(g1).plugTo(parent, "displayEpicenter").setValue(true);
 
     cp5.addRadioButton("radioButton").setPosition(10, 10).setSize(10, 10).setItemsPerRow(1).setSpacingRow(10).setGroup(g2).plugTo(parent, "mode")
-              .addItem("Draw Triangles", 0).activate(0)
+              .addItem("Draw Triangles", 0)
                 .addItem("Move Circle", 1)
                   .addItem("Delete Triangle", 2)
-                  .addItem("Set Epicenter", 3)
+                  .addItem("Set Epicenter", 3).activate(0)
                     ;
 
 
