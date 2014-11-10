@@ -209,25 +209,56 @@ void mouseDragged()
 {
      switch(mode){
       case 1 :
-
+        if(idPointDragged != null)
+        {
+          idPointDragged.x = mouseX;
+          idPointDragged.y = mouseY;
+/*
+           for (int i = allPointsPos.size ()-1; i>= 0; i--)
+            {
+              PVector pointPos = allPointsPos.get(i);
+              if (minPoint(pointPos, idPointDragged))
+              {
+                idPointDragged = pointPos;
+              }
+            }
+*/
+        }
         break;
     }
 }
+
+void mouseReleased() {
+   switch(mode){
+      case 1 :
+        if(idPointDragged != null)
+        {
+            //if is near
+            /*
+            for (int i = allPointsPos.size ()-1; i>= 0; i--)
+            {
+              PVector pointPos = allPointsPos.get(i);
+              if (minPoint(pointPos, idPointDragged))
+              {
+                idPointDragged = pointPos;
+              }
+            }*/
+        }
+        break;
+    }
+}
+
 
 void mouseMovePoint(){
 
     for (int i = allPointsPos.size ()-1; i>= 0; i--)
     {
       PVector pointPos = allPointsPos.get(i);
-      if (minPoint(pointPos, newpointPos))
+      if(inside(mouseX,mouseY,pointPos.x,pointPos.y))
       {
-        savedIds[step] =  i;
-        isNear = true;
+        idPointDragged = pointPos;
       }
     }
-
-
-
 
 }
 
@@ -253,7 +284,7 @@ void mouseTriangleCreation()
     if(!isNear)
     {
      allPointsPos.add(newpointPos);
-    savedIds[step] =  allPointsPos.size()-1;
+      savedIds[step] =  allPointsPos.size()-1;
     }
 
     if (step == 2)
