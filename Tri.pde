@@ -27,13 +27,8 @@ class Tri {
 
     ed = new EyeDropper(baseImg);
 
-    PVector bc = new PVector(
-    allPointsPos.get(points[1]).x+(allPointsPos.get(points[2]).x-allPointsPos.get(points[1]).x)/2, 
-    allPointsPos.get(points[1]).y+(allPointsPos.get(points[2]).y-allPointsPos.get(points[1]).y)/2);
+    moveTriangle();
 
-    centerPos = new PVector(int( allPointsPos.get(points[0]).x+(bc.x-allPointsPos.get(points[0]).x)*twothird), int(allPointsPos.get(points[0]).y+(bc.y-allPointsPos.get(points[0]).y)*twothird) );
-
-    triangleColor = ed.getColor(int(centerPos.x), int(centerPos.y), carreSize);
   } 
 
   void update() { 
@@ -76,4 +71,18 @@ class Tri {
    return alpha; 
   }
 
+
+  void moveTriangle()
+  {
+    PVector bc = new PVector(
+      allPointsPos.get(triPoints[1]).x+(allPointsPos.get(triPoints[2]).x-allPointsPos.get(triPoints[1]).x)/2, 
+      allPointsPos.get(triPoints[1]).y+(allPointsPos.get(triPoints[2]).y-allPointsPos.get(triPoints[1]).y)/2);
+
+
+    centerPos = new PVector(int( allPointsPos.get(triPoints[0]).x+(bc.x-allPointsPos.get(triPoints[0]).x)*twothird), int(allPointsPos.get(triPoints[0]).y+(bc.y-allPointsPos.get(triPoints[0]).y)*twothird) );
+
+    triangleColor = ed.getColor(int(centerPos.x), int(centerPos.y), carreSize);
+
+  }
+  
 }

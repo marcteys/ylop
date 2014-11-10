@@ -213,6 +213,13 @@ void mouseDragged()
         {
           idPointDragged.x = mouseX;
           idPointDragged.y = mouseY;
+
+          //update triangles
+          for (int i = triangles.size ()-1; i >= 0; i--)
+          {
+            Tri tri = triangles.get(i);
+            tri.moveTriangle();
+          }
 /*
            for (int i = allPointsPos.size ()-1; i>= 0; i--)
             {
@@ -229,10 +236,14 @@ void mouseDragged()
 }
 
 void mouseReleased() {
+
+
+  //update triangle pos
    switch(mode){
       case 1 :
         if(idPointDragged != null)
         {
+
             //if is near
             /*
             for (int i = allPointsPos.size ()-1; i>= 0; i--)
@@ -258,7 +269,7 @@ void mouseMovePoint(){
       {
         idPointDragged = pointPos;
       }
-    }
+    }    
 
 }
 
