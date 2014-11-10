@@ -9,7 +9,7 @@ ControlFrame cf;
 
 
 boolean setPosition = false;
-
+PVector idPointDragged = null;
 ////Settings
 
 //display
@@ -40,7 +40,7 @@ public int randomAlpha = 50;
 int[] savedIds = new int[3];
 int step  = 0;
 
-public ArrayList<PVector> allMousePos;
+public ArrayList<PVector> allPointsPos;
 ArrayList<Tri> triangles;
 PImage baseImage;
 
@@ -50,7 +50,7 @@ void setup() {  // setup() runs once
   frameRate(30);
   smooth();
 
-  allMousePos = new ArrayList<PVector>();
+  allPointsPos = new ArrayList<PVector>();
   triangles = new ArrayList<Tri>();
   baseImage = loadImage("test.jpg");
 
@@ -69,13 +69,13 @@ void draw() {
   background(255);
   image(baseImage, 0, 0);
 
-  println("mode: "+mode);
   //mode
   switch(mode){
-      case 0 :
-          trianglesCreation();
+      case 0 : // DRAW TRIANGLES
+        trianglesCreation();
         break;
-      case 1 :
+      case 1 : // MOVE CIRCLES
+        movePoints();
         break;
       case 2 :
         break;
@@ -86,14 +86,7 @@ void draw() {
   //update triangles
   updateTriangles();
 
-  // draw cursor
-  pushStyle();
-  noStroke();
-  fill(255, 20, 20);
-  ellipse(mouseX, mouseY, 5, 5);
-  fill(255, 20, 20, 50);
-  ellipse(mouseX, mouseY, minDistCollapse, minDistCollapse);
-  popStyle();
+ 
 
   //debug
   if (displayCircle) debugCircles();
@@ -110,6 +103,22 @@ void draw() {
 }
 
 
+
+void movePoints()
+{
+
+    // draw cursor
+    pushStyle();
+    noStroke();
+    fill(20, 20, 255);
+    ellipse(mouseX, mouseY, 5, 5);
+    fill(20, 20, 255, 50);
+    ellipse(mouseX, mouseY, minDistCollapse, minDistCollapse);
+    popStyle();
+
+    debugCircles();
+}
+
 void trianglesCreation()
 {
   pushStyle();
@@ -123,18 +132,28 @@ void trianglesCreation()
   {
     stroke(255, 20, 20);
     strokeWeight(1);
-    line(allMousePos.get(savedIds[step-1]).x, allMousePos.get(savedIds[step-1]).y, mouseX, mouseY);
+    line(allPointsPos.get(savedIds[step-1]).x, allPointsPos.get(savedIds[step-1]).y, mouseX, mouseY);
   } 
   else if (step == 2)
   {
     stroke(255, 20, 20);
     strokeWeight(1);
-    line(allMousePos.get(savedIds[step-1]).x, allMousePos.get(savedIds[step-1]).y, allMousePos.get(savedIds[step-2]).x, allMousePos.get(savedIds[step-2]).y);
-    line(allMousePos.get(savedIds[step-1]).x, allMousePos.get(savedIds[step-1]).y, mouseX, mouseY);
+    line(allPointsPos.get(savedIds[step-1]).x, allPointsPos.get(savedIds[step-1]).y, allPointsPos.get(savedIds[step-2]).x, allPointsPos.get(savedIds[step-2]).y);
+    line(allPointsPos.get(savedIds[step-1]).x, allPointsPos.get(savedIds[step-1]).y, mouseX, mouseY);
     fill(255, 20, 20, 100);
-    triangle(allMousePos.get(savedIds[step-1]).x, allMousePos.get(savedIds[step-1]).y, allMousePos.get(savedIds[step-2]).x, allMousePos.get(savedIds[step-2]).y, mouseX, mouseY);
+    triangle(allPointsPos.get(savedIds[step-1]).x, allPointsPos.get(savedIds[step-1]).y, allPointsPos.get(savedIds[step-2]).x, allPointsPos.get(savedIds[step-2]).y, mouseX, mouseY);
   }
   popStyle();
+
+
+    // draw cursor
+    pushStyle();
+    noStroke();
+    fill(255, 20, 20);
+    ellipse(mouseX, mouseY, 5, 5);
+    fill(255, 20, 20, 50);
+    ellipse(mouseX, mouseY, minDistCollapse, minDistCollapse);
+    popStyle();
 }
 
 void debugCircles()
@@ -142,9 +161,9 @@ void debugCircles()
   pushStyle();
   fill(255, 20, 20);
   noStroke();
-  for (int i = allMousePos.size ()-1; i>= 0; i--)
+  for (int i = allPointsPos.size ()-1; i>= 0; i--)
   {
-    PVector circlePos = allMousePos.get(i);
+    PVector circlePos = allPointsPos.get(i);
     ellipse(circlePos.x, circlePos.y, 5, 5);
   }
   popStyle();
@@ -176,6 +195,7 @@ void mousePressed() {
         mouseTriangleCreation();
         break;
       case 1 :
+        mouseMovePoint();
         break;
       case 2 :
         break;
@@ -185,21 +205,45 @@ void mousePressed() {
   }
 }
 
+void mouseDragged()
+{
+     switch(mode){
+      case 1 :
 
+        break;
+    }
+}
+
+void mouseMovePoint(){
+
+    for (int i = allPointsPos.size ()-1; i>= 0; i--)
+    {
+      PVector pointPos = allPointsPos.get(i);
+      if (minPoint(pointPos, newpointPos))
+      {
+        savedIds[step] =  i;
+        isNear = true;
+      }
+    }
+
+
+
+
+}
 
 
 // mode  0
 void mouseTriangleCreation()
 {
 
-    PVector newMousePos = new PVector(mouseX,mouseY);
+    PVector newpointPos = new PVector(mouseX,mouseY);
 
     boolean isNear = false;
     //calculate if there is a point near
-    for (int i = allMousePos.size ()-1; i>= 0; i--)
+    for (int i = allPointsPos.size ()-1; i>= 0; i--)
     {
-      PVector mousePos = allMousePos.get(i);
-      if (minPoint(mousePos, newMousePos))
+      PVector pointPos = allPointsPos.get(i);
+      if (minPoint(pointPos, newpointPos))
       {
         savedIds[step] =  i;
         isNear = true;
@@ -208,8 +252,8 @@ void mouseTriangleCreation()
     //if it's not near, we add a new point in the canvas
     if(!isNear)
     {
-     allMousePos.add(newMousePos);
-    savedIds[step] =  allMousePos.size()-1;
+     allPointsPos.add(newpointPos);
+    savedIds[step] =  allPointsPos.size()-1;
     }
 
     if (step == 2)

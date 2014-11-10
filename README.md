@@ -8,4 +8,4 @@ processing sketch
 
 ###Debug
 * new random seed
-
+*create a tri from the two nearest

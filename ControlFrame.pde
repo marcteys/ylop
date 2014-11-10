@@ -49,11 +49,26 @@ public class ControlFrame extends PApplet {
     accordion.open(0, 1,2);
     accordion.setCollapseMode(Accordion.MULTIPLES);
 
+
+
+
     cp5.addToggle("Display Circles").setPosition(10, 10).setSize(10, 10).setGroup(g1).plugTo(parent, "displayCircle").setValue(false);
     cp5.addToggle("Display Color").setPosition(10, 30).setSize(10, 10).setGroup(g1).plugTo(parent, "displayColor");
     cp5.addToggle("Triangles Only").setPosition(10, 50).setSize(10, 10).setGroup(g1).plugTo(parent, "trianglesOnly");
-    cp5.addToggle("Display Epicenter").setPosition(10, 70).setSize(10, 10).setGroup(g1).plugTo(parent, "displayEpicenter").setValue(true);
+    cp5.addToggle("Display Epicenter").setPosition(10, 70).setSize(10, 10).setGroup(g1).plugTo(parent, "displayEpicenter").setValue(false);
 
+
+
+  Slider s  =  cp5.addSlider("")
+     .setRange(0, 5)
+     .setPosition(10, 10)
+     .setSize(100,10)
+     .setNumberOfTickMarks(5)
+     .setGroup(g2).setValue(0)
+     .plugTo(parent, "mode")
+     ;
+  
+/*
     cp5.addRadioButton("radioButton").setPosition(10, 10).setSize(10, 10).setItemsPerRow(1).setSpacingRow(10).setGroup(g2).plugTo(parent, "mode")
               .addItem("Draw Triangles", 0)
                 .addItem("Move Circle", 1)
@@ -61,11 +76,9 @@ public class ControlFrame extends PApplet {
                   .addItem("Set Epicenter", 3).activate(0)
                     ;
 
+*/
 
-
-
-//settings 
-
+    //settings 
     cp5.addSlider("Min dist").setPosition(10, 10).setRange(0, 30).setValue(15).setGroup(g3).plugTo(parent, "minDistCollapse");
     cp5.addSlider("X").setPosition(10, 30).setRange(0, 1000).setValue(0).setGroup(g3).plugTo(parent, "epicenterX");
     cp5.addSlider("Y").setPosition(10, 50).setRange(0, 1000).setValue(0).setGroup(g3).plugTo(parent, "epicenterY");
@@ -76,6 +89,29 @@ public class ControlFrame extends PApplet {
   public void draw() {
     background(abc);
   }
+
+
+
+void customize(DropdownList ddl) {
+  // a convenience function to customize a DropdownList
+  ddl.setBackgroundColor(color(190));
+  ddl.setItemHeight(20);
+  ddl.setBarHeight(15);
+  ddl.captionLabel().set("dropdown");
+  ddl.captionLabel().style().marginTop = 3;
+  ddl.captionLabel().style().marginLeft = 3;
+  ddl.valueLabel().style().marginTop = 3;
+  for (int i=0;i<40;i++) {
+    ddl.addItem("item "+i, i);
+  }
+  //ddl.scroll(0);
+  ddl.setColorBackground(color(60));
+  ddl.setColorActive(color(255, 128));
+}
+
+
+
+
 
   private ControlFrame() {
   }
