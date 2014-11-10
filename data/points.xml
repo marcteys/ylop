@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ylop>
-  <points>
-    <point id="0" x1="0" x2="0" y1="0" y2="0"/>
-  </points>
-  <triangles>
-    <triangle id="0" point0="0" point1="0" point2="0"/>
-  </triangles>
+  <customData>
+    <name>My custom name baseImage</name>
+  </customData>
+  <points/>
+  <triangles/>
 </ylop>
