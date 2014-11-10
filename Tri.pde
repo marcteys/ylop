@@ -18,17 +18,12 @@ class Tri {
 
   long randSeed = (long)random(0, 5000); 
 
-  int[] triPoints = new int[6];
+  int[] triPoints = new int[3];
 
   Tri (PImage baseImg, int[] points) {  
-
-    
     triPoints = points;
-
     ed = new EyeDropper(baseImg);
-
     moveTriangle();
-
   } 
 
   void update() { 
@@ -84,5 +79,5 @@ class Tri {
     triangleColor = ed.getColor(int(centerPos.x), int(centerPos.y), carreSize);
 
   }
-  
+
 }

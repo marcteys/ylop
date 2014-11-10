@@ -9,7 +9,8 @@ ControlFrame cf;
 
 
 boolean setPosition = false;
-PVector idPointDragged = null;
+PVector pointDragged = null;
+int pointToDelete = -1;
 ////Settings
 
 //display
@@ -49,6 +50,7 @@ void setup() {  // setup() runs once
   size(325, 600);
   frameRate(30);
   smooth();
+  rectMode(CENTER);
 
   allPointsPos = new ArrayList<PVector>();
   triangles = new ArrayList<Tri>();
@@ -78,6 +80,7 @@ void draw() {
         movePoints();
         break;
       case 2 :
+      deletePoint();
         break;
       case 3 :
         break;  
@@ -103,6 +106,17 @@ void draw() {
 }
 
 
+void deletePoint() {
+
+   // draw cursor
+    pushStyle();
+    stroke(0, 200, 140);
+    fill(0, 200, 140,50);
+    rect(mouseX, mouseY, minDistCollapse, minDistCollapse);
+    popStyle();
+
+    debugCircles();
+}
 
 void movePoints()
 {
@@ -178,7 +192,6 @@ void updateTriangles()
     tri.update();
 
     //debug stuff
-
     if (displayColor) tri.debugColor = true;
     else tri.debugColor = false;
 
@@ -198,6 +211,7 @@ void mousePressed() {
         mouseMovePoint();
         break;
       case 2 :
+        mouseDeletePoint();
         break;
       case 3 :
         break;  
@@ -209,10 +223,10 @@ void mouseDragged()
 {
      switch(mode){
       case 1 :
-        if(idPointDragged != null)
+        if(pointDragged != null)
         {
-          idPointDragged.x = mouseX;
-          idPointDragged.y = mouseY;
+          pointDragged.x = mouseX;
+          pointDragged.y = mouseY;
 
           //update triangles
           for (int i = triangles.size ()-1; i >= 0; i--)
@@ -220,45 +234,57 @@ void mouseDragged()
             Tri tri = triangles.get(i);
             tri.moveTriangle();
           }
-/*
-           for (int i = allPointsPos.size ()-1; i>= 0; i--)
-            {
-              PVector pointPos = allPointsPos.get(i);
-              if (minPoint(pointPos, idPointDragged))
-              {
-                idPointDragged = pointPos;
-              }
-            }
-*/
         }
         break;
     }
 }
 
 void mouseReleased() {
-
-
   //update triangle pos
    switch(mode){
       case 1 :
-        if(idPointDragged != null)
+        if(pointDragged != null)
         {
-
-            //if is near
-            /*
-            for (int i = allPointsPos.size ()-1; i>= 0; i--)
-            {
-              PVector pointPos = allPointsPos.get(i);
-              if (minPoint(pointPos, idPointDragged))
-              {
-                idPointDragged = pointPos;
-              }
-            }*/
+            // if its near ?
         }
         break;
     }
 }
 
+
+
+void mouseDeletePoint()
+{
+    for (int i = allPointsPos.size ()-1; i>= 0; i--)
+    {
+      PVector pointPos = allPointsPos.get(i);
+      if(inside(mouseX,mouseY,pointPos.x,pointPos.y))
+      {
+        pointToDelete = i;
+      }
+    } 
+
+    //if there is a point to delete
+    if(pointToDelete >= 0)
+    {
+      //remove triangles connected to the specifi point
+      for (int i = triangles.size ()-1; i >= 0; i--)
+      {
+        Tri tri = triangles.get(i);
+
+        for(int j = 0; j < 3; j++) {
+          if(tri.triPoints[j] == pointToDelete)
+          {
+              println("delete point: "+ i);
+              triangles.remove(i);
+          }
+        }
+      }
+      //remove the point;
+      allPointsPos.remove(pointToDelete);
+      pointToDelete = -1;
+    }
+}
 
 void mouseMovePoint(){
 
@@ -267,12 +293,10 @@ void mouseMovePoint(){
       PVector pointPos = allPointsPos.get(i);
       if(inside(mouseX,mouseY,pointPos.x,pointPos.y))
       {
-        idPointDragged = pointPos;
+        pointDragged = pointPos;
       }
     }    
-
 }
-
 
 // mode  0
 void mouseTriangleCreation()
@@ -309,4 +333,54 @@ void mouseTriangleCreation()
     {
       step++;
     }
+}
+
+
+
+
+//save side
+
+XML xml;
+
+public void SaveData()
+{
+
+  String currentTime = ""+year() + month() + day() + hour() + minute() + second();
+
+  xml = new XML("ylop");
+  
+  XML memo = xml.addChild("customData");
+  XML newChild = memo.addChild("name");
+  newChild.setContent("My custom name");
+
+  XML pointsChild = xml.addChild("points");
+  newChild = pointsChild.addChild("point");
+  newChild.setInt("id", 0);
+  newChild.setInt("x1", 0);
+  newChild.setInt("y1", 0);
+  newChild.setInt("x2", 0);
+  newChild.setInt("y2", 0);
+
+  XML trianglesChild = xml.addChild("triangles");
+
+  newChild = trianglesChild.addChild("triangle");
+  newChild.setInt("id", 0);
+  newChild.setInt("point0", 0);
+  newChild.setInt("point1", 0);
+  newChild.setInt("point2", 0);
+
+
+  saveXML(xml, "/data/points-"+currentTime+".xml");
+  saveXML(xml, "/data/points.xml");
+
+  println("Saved.");
+
+}
+
+
+public void LoadData()
+{
+
+
+
 }

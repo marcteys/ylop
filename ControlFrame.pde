@@ -38,15 +38,25 @@ public class ControlFrame extends PApplet {
           .setBackgroundColor(color(255, 50))
             ;
 
+  Group g4 = cp5.addGroup("Data load/save")
+      .setPosition(10, 70)
+        .setSize(173, 50)
+          .setBackgroundColor(color(255, 50))
+            ;
+
+
     accordion = cp5.addAccordion("acc")
       .setPosition(10, 10)
         .setWidth(173)
           .addItem(g1)
             .addItem(g2)
               .addItem(g3)
-                .setItemHeight(120)
+                .addItem(g4)
+                  .setItemHeight(120)
                   ;
-    accordion.open(0, 1,2);
+
+
+    accordion.open(0, 1,2,3);
     accordion.setCollapseMode(Accordion.MULTIPLES);
 
 
@@ -84,13 +94,28 @@ public class ControlFrame extends PApplet {
     cp5.addSlider("Y").setPosition(10, 50).setRange(0, 1000).setValue(0).setGroup(g3).plugTo(parent, "epicenterY");
     cp5.addSlider("alphaDist").setPosition(10, 70).setRange(0, 500).setValue(100).setGroup(g3).plugTo(parent, "alphaDist");
     cp5.addSlider("randomAlpha").setPosition(10, 90).setRange(0, 255).setValue(50).setGroup(g3).plugTo(parent, "randomAlpha");
+  
+    //save and load xml
+  cp5.addButton("Save data").setValue(100).setPosition(10,10).setSize(150,20).setGroup(g4)
+  .addCallback(new CallbackListener() {
+      public void controlEvent(CallbackEvent event) {
+        if (event.getAction() == ControlP5.ACTION_RELEASED) {
+          SaveData();
+        }
+      }
+    });
+
+  cp5.addButton("Load Data ( data/points.xml ) ").setPosition(10,40).setSize(150,20).setGroup(g4);
+
+
+
+
   }
+
 
   public void draw() {
     background(abc);
   }
-
-
 
 void customize(DropdownList ddl) {
   // a convenience function to customize a DropdownList
