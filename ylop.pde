@@ -81,7 +81,6 @@ void draw() {
         break;
       case 2 : // MOVE CIRCLES
         movePoints();
-     
         break;
       case 3 :
        deletePoint();
@@ -329,33 +328,47 @@ void mouseTriangleCreationAuto()
     {
         step = 0;
 
-        addANewPoint();
+        int newPointID = addANewPoint();
 
         int nearestOne = -1;
         int nearestTwo = -1;
         float nearDistOne = 5000;
-        float nearDistTwo;
+        float nearDistTwo = 5000;
 
+        /* TO DO : Optmize in one loop */
+        //nearest point
         for (int i = allPointsPos.size ()-1; i>= 0; i--)
         {
           PVector pointPos = allPointsPos.get(i);
-
-          if (pointPos.dist(newpointPos) < nearDistOne)
-          {
-            nearDistTwo = nearDistOne;
-            nearDistOne = pointPos.dist(newpointPos);
-
-            nearestTwo = nearestOne;
+          if (i != newPointID && pointPos.dist(allPointsPos.get(newPointID)) < nearDistOne)
+          {  
+            nearDistOne = pointPos.dist(allPointsPos.get(newPointID));
             nearestOne = i;
           }
         }
+       
+         //second nearest point
+        for (int i = allPointsPos.size ()-1; i>= 0; i--)
+        {
+          PVector pointPos = allPointsPos.get(i);
+          if (i != newPointID && i != nearestOne && pointPos.dist(allPointsPos.get(newPointID)) < nearDistTwo)
+          {  
+            nearDistTwo = pointPos.dist(allPointsPos.get(newPointID));
+            nearestTwo = i;
+          }
+        }
+        
+      int[] triPos = {newPointID, nearestOne, nearestTwo};
+       
+      Tri newTri = new Tri(baseImage, triPos);
+      triangles.add(newTri);
+      step = 0 ;
 
     }
 
-
-
-
 }
+
+
 // mode  0
 void mouseTriangleCreation()
 {
@@ -376,10 +389,11 @@ void mouseTriangleCreation()
 }
 
 
-void addANewPoint()
+int addANewPoint()
 {
     PVector newpointPos = new PVector(mouseX,mouseY);
-
+    int pointID = -1;
+    
     boolean isNear = false;
     //calculate if there is a point near
     for (int i = allPointsPos.size ()-1; i>= 0; i--)
@@ -388,18 +402,19 @@ void addANewPoint()
       if (minPoint(pointPos, newpointPos))
       {
         savedIds[step] =  i;
+        pointID = i;
         isNear = true;
       }
     }
     //if it's not near, we add a new point in the canvas
     if(!isNear)
     {
-     allPointsPos.add(newpointPos);
+       allPointsPos.add(newpointPos);
       savedIds[step] =  allPointsPos.size()-1;
+      pointID =  allPointsPos.size()-1;
     }
 
-
-    return
+  return pointID;
 }
 
 

@@ -4,25 +4,13 @@
     <name>My custom name baseImage</name>
   </settings>
   <points>
-    <point id="9" x="183.0" y="148.0"/>
-    <point id="8" x="122.0" y="172.0"/>
-    <point id="7" x="101.0" y="376.0"/>
-    <point id="6" x="214.0" y="372.0"/>
-    <point id="5" x="214.0" y="372.0"/>
-    <point id="4" x="266.0" y="322.0"/>
-    <point id="3" x="260.0" y="167.0"/>
-    <point id="2" x="203.0" y="279.0"/>
-    <point id="1" x="140.0" y="287.0"/>
-    <point id="0" x="168.0" y="193.0"/>
+    <point id="3" x="211.0" y="232.0"/>
+    <point id="2" x="169.0" y="416.0"/>
+    <point id="1" x="227.0" y="305.0"/>
+    <point id="0" x="83.0" y="289.0"/>
   </points>
   <triangles>
-    <triangle a="8" b="9" c="0" id="7"/>
-    <triangle a="0" b="8" c="1" id="6"/>
-    <triangle a="5" b="1" c="7" id="5"/>
-    <triangle a="6" b="2" c="4" id="4"/>
-    <triangle a="2" b="1" c="5" id="3"/>
-    <triangle a="2" b="4" c="3" id="2"/>
-    <triangle a="2" b="0" c="3" id="1"/>
+    <triangle a="3" b="1" c="0" id="1"/>
     <triangle a="0" b="1" c="2" id="0"/>
   </triangles>
 </ylop>
