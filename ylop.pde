@@ -76,20 +76,21 @@ void draw() {
       case 0 : // DRAW TRIANGLES
         trianglesCreation();
         break;
-      case 1 : // MOVE CIRCLES
-        movePoints();
+      case 1 :
+        trianglesCreationAuto();
         break;
-      case 2 :
-      deletePoint();
+      case 2 : // MOVE CIRCLES
+        movePoints();
+     
         break;
       case 3 :
+       deletePoint();
         break;  
     }
 
   //update triangles
   updateTriangles();
 
- 
 
   //debug
   if (displayCircle) debugCircles();
@@ -170,6 +171,24 @@ void trianglesCreation()
     popStyle();
 }
 
+
+void trianglesCreationAuto()
+{
+  pushStyle();
+    // draw cursor
+    pushStyle();
+    noStroke();
+    fill(255, 20, 20);
+    ellipse(mouseX, mouseY, 5, 5);
+    fill(255, 20, 20, 50);
+    ellipse(mouseX, mouseY, minDistCollapse, minDistCollapse);
+    popStyle();
+}
+
+
+
+
+
 void debugCircles()
 {
   pushStyle();
@@ -208,12 +227,13 @@ void mousePressed() {
         mouseTriangleCreation();
         break;
       case 1 :
-        mouseMovePoint();
+        mouseTriangleCreationAuto();
         break;
       case 2 :
-        mouseDeletePoint();
+        mouseMovePoint();
         break;
       case 3 :
+      mouseDeletePoint();
         break;  
     }
   }
@@ -222,7 +242,7 @@ void mousePressed() {
 void mouseDragged()
 {
      switch(mode){
-      case 1 :
+      case 2 :
         if(pointDragged != null)
         {
           pointDragged.x = mouseX;
@@ -242,7 +262,7 @@ void mouseDragged()
 void mouseReleased() {
   //update triangle pos
    switch(mode){
-      case 1 :
+      case 2 :
         if(pointDragged != null)
         {
             // if its near ?
@@ -298,10 +318,66 @@ void mouseMovePoint(){
     }    
 }
 
+
+void mouseTriangleCreationAuto()
+{
+    if(allPointsPos.size() <= 2 )
+    {
+      //we do nothing if there is not enough points
+    }
+    else
+    {
+        step = 0;
+
+        addANewPoint();
+
+        int nearestOne = -1;
+        int nearestTwo = -1;
+        float nearDistOne = 5000;
+        float nearDistTwo;
+
+        for (int i = allPointsPos.size ()-1; i>= 0; i--)
+        {
+          PVector pointPos = allPointsPos.get(i);
+
+          if (pointPos.dist(newpointPos) < nearDistOne)
+          {
+            nearDistTwo = nearDistOne;
+            nearDistOne = pointPos.dist(newpointPos);
+
+            nearestTwo = nearestOne;
+            nearestOne = i;
+          }
+        }
+
+    }
+
+
+
+
+}
 // mode  0
 void mouseTriangleCreation()
 {
 
+    addANewPoint();
+
+    if (step == 2)
+    {
+      Tri newTri = new Tri(baseImage, savedIds);
+      triangles.add(newTri);
+      step = 0 ;
+      savedIds = new int[3];
+    } 
+    else
+    {
+      step++;
+    }
+}
+
+
+void addANewPoint()
+{
     PVector newpointPos = new PVector(mouseX,mouseY);
 
     boolean isNear = false;
@@ -322,19 +398,9 @@ void mouseTriangleCreation()
       savedIds[step] =  allPointsPos.size()-1;
     }
 
-    if (step == 2)
-    {
-      Tri newTri = new Tri(baseImage, savedIds);
-      triangles.add(newTri);
-      step = 0 ;
-      savedIds = new int[3];
-    } 
-    else
-    {
-      step++;
-    }
-}
 
+    return
+}
 
 
 void ResetCanvas()
