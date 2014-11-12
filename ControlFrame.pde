@@ -113,9 +113,18 @@ public class ControlFrame extends PApplet {
         }
       }
     });
+    
+  cp5.addButton("Save canvas as PDF").setPosition(10,70).setSize(150,20).setGroup(g4)
+    .addCallback(new CallbackListener() {
+      public void controlEvent(CallbackEvent event) {
+        if (event.getAction() == ControlP5.ACTION_RELEASED) {
+          recordPDF = true;
+        }
+      }
+    });
 
 
- cp5.addButton("Exit").setPosition(40,90).setSize(80,20).setGroup(g4)
+ cp5.addButton("Exit").setPosition(40,130).setSize(80,20).setGroup(g4)
     .addCallback(new CallbackListener() {
       public void controlEvent(CallbackEvent event) {
         if (event.getAction() == ControlP5.ACTION_RELEASED) {

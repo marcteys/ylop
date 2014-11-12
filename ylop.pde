@@ -3,6 +3,7 @@
 import java.awt.Frame;
 import java.awt.BorderLayout;
 import controlP5.*;
+import processing.pdf.*;
 
 private ControlP5 cp5;
 ControlFrame cf;
@@ -11,6 +12,8 @@ ControlFrame cf;
 boolean setPosition = false;
 PVector pointDragged = null;
 int pointToDelete = -1;
+
+
 ////Settings
 
 //display
@@ -34,6 +37,9 @@ public int epicenterX = 150;
 public int epicenterY = 200;
 public int alphaDist = 20;
 public int randomAlpha = 50;
+
+//pdf
+boolean recordPDF = false;
 
 
 //end settings
@@ -68,6 +74,11 @@ void draw() {
     setPosition = true;
   }
 
+
+  if (recordPDF) {
+    beginRecord(PDF, "frame-####.pdf"); 
+  }
+
   background(255);
   image(baseImage, 0, 0);
 
@@ -90,7 +101,10 @@ void draw() {
   //update triangles
   updateTriangles();
 
-
+  if (recordPDF) {
+    endRecord();
+    recordPDF = false;
+  }
   //debug
   if (displayCircle) debugCircles();
   if (displayEpicenter)
