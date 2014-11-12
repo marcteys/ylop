@@ -53,14 +53,14 @@ PImage baseImage;
 
 
 void setup() {  // setup() runs once
-  size(325, 600);
+  size(1200, 800);
   frameRate(30);
   smooth();
   rectMode(CENTER);
 
   allPointsPos = new ArrayList<PVector>();
   triangles = new ArrayList<Tri>();
-  baseImage = loadImage("test.jpg");
+  baseImage = loadImage("base.jpg");
 
   // CP5
   cp5 = new ControlP5(this);
@@ -309,7 +309,7 @@ void mouseDeletePoint()
           if(tri.triPoints[j] == pointToDelete)
           {
               println("delete point: "+ i);
-              triangles.remove(i);
+              if(tri != null) triangles.remove(i);
           }
         }
       }

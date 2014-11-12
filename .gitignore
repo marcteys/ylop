@@ -1,3 +1,7 @@
 build-tmp/
 points-*.xml
 *.pdf
+*.psd
+*.CR2
+*Thumbs.db
+*.xmp
