@@ -38,6 +38,13 @@ public int epicenterY = 200;
 public int alphaDist = 20;
 public int randomAlpha = 50;
 
+
+// lines settings
+float linesDivisionFactor = 0.7;
+float linesOffset = 5;
+
+
+
 //pdf
 boolean recordPDF = false;
 
@@ -64,7 +71,7 @@ void setup() {  // setup() runs once
 
   // CP5
   cp5 = new ControlP5(this);
-  cf = addControlFrame("Settings", 200, 629);
+  cf = addControlFrame("Settings", 200, 829);
 }
 
 void draw() {
@@ -308,12 +315,10 @@ void mouseDeletePoint()
         for(int j = 0; j < 3; j++) {
           if(tri.triPoints[j] == pointToDelete)
           {
-             println( j +"-"+tri.triPoints[j]);
-
               if(tri != null) {
-                println(tri.triPoints[0]);
-
-                triangles.remove(i);
+                try{ triangles.remove(i);} catch(IndexOutOfBoundsException e){
+      println(e);
+   }
                 println("delete triangle: "+ i);
               }
           }

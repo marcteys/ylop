@@ -32,11 +32,13 @@ class Tri {
       noFill();
       stroke(0);
     }
-    else {
+    else
+    {
       fill(triangleColor,triangleAlpha());/*
       stroke(255,0,0);
       line(epicenterX,epicenterY,centerPos.x,centerPos.y);*/
-      stroke(255,255-triangleAlpha());
+      float alphaTraits = constrain((255-triangleAlpha()*linesDivisionFactor)-linesOffset,0,255);
+      stroke(255,alphaTraits);
     }
 
     

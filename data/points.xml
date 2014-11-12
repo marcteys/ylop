@@ -2,10 +2,163 @@
 <ylop>
   <settings>
     <name>My custom name baseImage</name>
-    <time day="12" hour="12" minute="30" month="11" second="21" year="2014"/>
+    <time day="12" hour="14" minute="56" month="11" second="9" year="2014"/>
   </settings>
   <points>
-    <point id="61" x="646.0" y="256.0"/>
+    <point id="214" x="606.0" y="203.0"/>
+    <point id="213" x="-1000.0" y="-1000.0"/>
+    <point id="212" x="-1000.0" y="-1000.0"/>
+    <point id="211" x="725.0" y="307.0"/>
+    <point id="210" x="584.0" y="354.0"/>
+    <point id="209" x="747.0" y="795.0"/>
+    <point id="208" x="999.0" y="797.0"/>
+    <point id="207" x="1079.0" y="795.0"/>
+    <point id="206" x="857.0" y="785.0"/>
+    <point id="205" x="599.0" y="134.0"/>
+    <point id="204" x="661.0" y="69.0"/>
+    <point id="203" x="910.0" y="795.0"/>
+    <point id="202" x="1028.0" y="740.0"/>
+    <point id="201" x="987.0" y="781.0"/>
+    <point id="200" x="110.0" y="638.0"/>
+    <point id="199" x="921.0" y="470.0"/>
+    <point id="198" x="934.0" y="457.0"/>
+    <point id="197" x="934.0" y="457.0"/>
+    <point id="196" x="841.0" y="437.0"/>
+    <point id="195" x="999.0" y="136.0"/>
+    <point id="194" x="864.0" y="131.0"/>
+    <point id="193" x="980.0" y="34.0"/>
+    <point id="192" x="857.0" y="145.0"/>
+    <point id="191" x="819.0" y="38.0"/>
+    <point id="190" x="525.0" y="71.0"/>
+    <point id="189" x="-1000.0" y="-1000.0"/>
+    <point id="188" x="579.0" y="66.0"/>
+    <point id="187" x="241.0" y="280.0"/>
+    <point id="186" x="271.0" y="106.0"/>
+    <point id="185" x="231.0" y="79.0"/>
+    <point id="184" x="158.0" y="81.0"/>
+    <point id="183" x="162.0" y="22.0"/>
+    <point id="182" x="180.0" y="174.0"/>
+    <point id="181" x="36.0" y="156.0"/>
+    <point id="180" x="52.0" y="36.0"/>
+    <point id="179" x="768.0" y="457.0"/>
+    <point id="178" x="742.0" y="418.0"/>
+    <point id="177" x="732.0" y="345.0"/>
+    <point id="176" x="732.0" y="345.0"/>
+    <point id="175" x="-1000.0" y="-1000.0"/>
+    <point id="174" x="1158.0" y="247.0"/>
+    <point id="173" x="1107.0" y="639.0"/>
+    <point id="172" x="1045.0" y="536.0"/>
+    <point id="171" x="482.0" y="389.0"/>
+    <point id="170" x="528.0" y="347.0"/>
+    <point id="169" x="598.0" y="480.0"/>
+    <point id="168" x="473.0" y="797.0"/>
+    <point id="167" x="205.0" y="795.0"/>
+    <point id="166" x="205.0" y="795.0"/>
+    <point id="165" x="306.0" y="699.0"/>
+    <point id="164" x="43.0" y="182.0"/>
+    <point id="163" x="285.0" y="368.0"/>
+    <point id="162" x="164.0" y="261.0"/>
+    <point id="161" x="259.0" y="622.0"/>
+    <point id="160" x="213.0" y="376.0"/>
+    <point id="159" x="378.0" y="496.0"/>
+    <point id="158" x="359.0" y="472.0"/>
+    <point id="157" x="359.0" y="472.0"/>
+    <point id="156" x="342.0" y="410.0"/>
+    <point id="155" x="437.0" y="17.0"/>
+    <point id="154" x="473.0" y="42.0"/>
+    <point id="153" x="523.0" y="379.0"/>
+    <point id="152" x="494.0" y="422.0"/>
+    <point id="151" x="638.0" y="389.0"/>
+    <point id="150" x="634.0" y="427.0"/>
+    <point id="149" x="667.0" y="358.0"/>
+    <point id="148" x="706.0" y="348.0"/>
+    <point id="147" x="688.0" y="369.0"/>
+    <point id="146" x="634.0" y="378.0"/>
+    <point id="145" x="312.0" y="260.0"/>
+    <point id="144" x="380.0" y="248.0"/>
+    <point id="143" x="1138.0" y="305.0"/>
+    <point id="142" x="994.0" y="551.0"/>
+    <point id="141" x="966.0" y="293.0"/>
+    <point id="140" x="987.0" y="170.0"/>
+    <point id="139" x="388.0" y="342.0"/>
+    <point id="138" x="333.0" y="365.0"/>
+    <point id="137" x="-1000.0" y="-1000.0"/>
+    <point id="136" x="-1000.0" y="-1000.0"/>
+    <point id="135" x="635.0" y="555.0"/>
+    <point id="134" x="558.0" y="632.0"/>
+    <point id="133" x="436.0" y="577.0"/>
+    <point id="132" x="-1000.0" y="-1000.0"/>
+    <point id="131" x="482.0" y="389.0"/>
+    <point id="130" x="482.0" y="389.0"/>
+    <point id="129" x="386.0" y="460.0"/>
+    <point id="128" x="473.0" y="42.0"/>
+    <point id="127" x="312.0" y="208.0"/>
+    <point id="126" x="380.0" y="89.0"/>
+    <point id="125" x="708.0" y="450.0"/>
+    <point id="124" x="857.0" y="785.0"/>
+    <point id="123" x="953.0" y="719.0"/>
+    <point id="122" x="910.0" y="744.0"/>
+    <point id="121" x="786.0" y="677.0"/>
+    <point id="120" x="782.0" y="765.0"/>
+    <point id="119" x="831.0" y="735.0"/>
+    <point id="118" x="-1000.0" y="-1000.0"/>
+    <point id="117" x="862.0" y="708.0"/>
+    <point id="116" x="885.0" y="688.0"/>
+    <point id="115" x="-1000.0" y="-1000.0"/>
+    <point id="114" x="793.0" y="658.0"/>
+    <point id="113" x="678.0" y="516.0"/>
+    <point id="112" x="673.0" y="503.0"/>
+    <point id="111" x="679.0" y="481.0"/>
+    <point id="110" x="655.0" y="449.0"/>
+    <point id="109" x="655.0" y="449.0"/>
+    <point id="108" x="671.0" y="479.0"/>
+    <point id="107" x="642.0" y="452.0"/>
+    <point id="106" x="444.0" y="284.0"/>
+    <point id="105" x="396.0" y="321.0"/>
+    <point id="104" x="445.0" y="308.0"/>
+    <point id="103" x="473.0" y="301.0"/>
+    <point id="102" x="444.0" y="284.0"/>
+    <point id="101" x="520.0" y="303.0"/>
+    <point id="100" x="563.0" y="282.0"/>
+    <point id="99" x="584.0" y="354.0"/>
+    <point id="98" x="584.0" y="354.0"/>
+    <point id="97" x="615.0" y="441.0"/>
+    <point id="96" x="564.0" y="452.0"/>
+    <point id="95" x="515.0" y="448.0"/>
+    <point id="94" x="540.0" y="356.0"/>
+    <point id="93" x="418.0" y="366.0"/>
+    <point id="92" x="460.0" y="315.0"/>
+    <point id="91" x="-1000.0" y="-1000.0"/>
+    <point id="90" x="744.0" y="452.0"/>
+    <point id="89" x="-1000.0" y="-1000.0"/>
+    <point id="88" x="771.0" y="396.0"/>
+    <point id="87" x="-1000.0" y="-1000.0"/>
+    <point id="86" x="-1000.0" y="-1000.0"/>
+    <point id="85" x="661.0" y="204.0"/>
+    <point id="84" x="708.0" y="300.0"/>
+    <point id="83" x="670.0" y="280.0"/>
+    <point id="82" x="590.0" y="288.0"/>
+    <point id="81" x="612.0" y="285.0"/>
+    <point id="80" x="612.0" y="285.0"/>
+    <point id="79" x="644.0" y="295.0"/>
+    <point id="78" x="590.0" y="309.0"/>
+    <point id="77" x="725.0" y="307.0"/>
+    <point id="76" x="771.0" y="336.0"/>
+    <point id="75" x="789.0" y="281.0"/>
+    <point id="74" x="752.0" y="281.0"/>
+    <point id="73" x="-1000.0" y="-1000.0"/>
+    <point id="72" x="-1000.0" y="-1000.0"/>
+    <point id="71" x="541.0" y="3.0"/>
+    <point id="70" x="616.0" y="500.0"/>
+    <point id="69" x="606.0" y="510.0"/>
+    <point id="68" x="-1000.0" y="-1000.0"/>
+    <point id="67" x="646.0" y="511.0"/>
+    <point id="66" x="605.0" y="535.0"/>
+    <point id="65" x="605.0" y="535.0"/>
+    <point id="64" x="632.0" y="541.0"/>
+    <point id="63" x="605.0" y="535.0"/>
+    <point id="62" x="-1000.0" y="-1000.0"/>
+    <point id="61" x="-1000.0" y="-1000.0"/>
     <point id="60" x="565.0" y="254.0"/>
     <point id="59" x="469.0" y="264.0"/>
     <point id="58" x="387.0" y="211.0"/>
@@ -13,7 +166,7 @@
     <point id="56" x="455.0" y="186.0"/>
     <point id="55" x="455.0" y="186.0"/>
     <point id="54" x="438.0" y="150.0"/>
-    <point id="53" x="573.0" y="521.0"/>
+    <point id="53" x="573.0" y="516.0"/>
     <point id="52" x="571.0" y="504.0"/>
     <point id="51" x="590.0" y="567.0"/>
     <point id="50" x="561.0" y="544.0"/>
@@ -21,98 +174,222 @@
     <point id="48" x="540.0" y="517.0"/>
     <point id="47" x="525.0" y="501.0"/>
     <point id="46" x="489.0" y="516.0"/>
-    <point id="45" x="600.0" y="583.0"/>
+    <point id="45" x="-1000.0" y="-1000.0"/>
     <point id="44" x="-1000.0" y="-1000.0"/>
-    <point id="43" x="600.0" y="583.0"/>
-    <point id="42" x="674.0" y="500.0"/>
-    <point id="41" x="736.0" y="491.0"/>
+    <point id="43" x="-1000.0" y="-1000.0"/>
+    <point id="42" x="-1000.0" y="-1000.0"/>
+    <point id="41" x="-1000.0" y="-1000.0"/>
     <point id="40" x="468.0" y="786.0"/>
-    <point id="39" x="440.0" y="724.0"/>
-    <point id="38" x="472.0" y="686.0"/>
+    <point id="39" x="446.0" y="706.0"/>
+    <point id="38" x="374.0" y="697.0"/>
     <point id="37" x="603.0" y="796.0"/>
     <point id="36" x="730.0" y="773.0"/>
     <point id="35" x="730.0" y="773.0"/>
     <point id="34" x="786.0" y="677.0"/>
-    <point id="33" x="732.0" y="651.0"/>
-    <point id="32" x="699.0" y="567.0"/>
-    <point id="31" x="665.0" y="725.0"/>
+    <point id="33" x="726.0" y="642.0"/>
+    <point id="32" x="710.0" y="557.0"/>
+    <point id="31" x="661.0" y="728.0"/>
     <point id="30" x="641.0" y="652.0"/>
-    <point id="29" x="578.0" y="776.0"/>
+    <point id="29" x="568.0" y="750.0"/>
     <point id="28" x="584.0" y="679.0"/>
-    <point id="27" x="473.0" y="739.0"/>
+    <point id="27" x="481.0" y="678.0"/>
     <point id="26" x="526.0" y="671.0"/>
     <point id="25" x="473.0" y="621.0"/>
     <point id="24" x="638.0" y="349.0"/>
     <point id="23" x="663.0" y="344.0"/>
     <point id="22" x="663.0" y="344.0"/>
     <point id="21" x="683.0" y="338.0"/>
-    <point id="20" x="666.0" y="328.0"/>
-    <point id="19" x="640.0" y="334.0"/>
-    <point id="18" x="647.0" y="320.0"/>
+    <point id="20" x="664.0" y="327.0"/>
+    <point id="19" x="-1000.0" y="-1000.0"/>
+    <point id="18" x="643.0" y="318.0"/>
     <point id="17" x="619.0" y="327.0"/>
-    <point id="16" x="640.0" y="334.0"/>
+    <point id="16" x="643.0" y="336.0"/>
     <point id="15" x="613.0" y="341.0"/>
-    <point id="14" x="624.0" y="21.0"/>
-    <point id="13" x="516.0" y="199.0"/>
-    <point id="12" x="583.0" y="184.0"/>
-    <point id="11" x="536.0" y="136.0"/>
+    <point id="14" x="600.0" y="16.0"/>
+    <point id="13" x="514.0" y="225.0"/>
+    <point id="12" x="570.0" y="173.0"/>
+    <point id="11" x="531.0" y="129.0"/>
     <point id="10" x="599.0" y="134.0"/>
-    <point id="9" x="662.0" y="145.0"/>
+    <point id="9" x="665.0" y="139.0"/>
     <point id="8" x="693.0" y="192.0"/>
     <point id="7" x="724.0" y="168.0"/>
     <point id="6" x="724.0" y="168.0"/>
     <point id="5" x="776.0" y="176.0"/>
-    <point id="4" x="696.0" y="120.0"/>
+    <point id="4" x="707.0" y="120.0"/>
     <point id="3" x="755.0" y="126.0"/>
-    <point id="2" x="664.0" y="76.0"/>
+    <point id="2" x="-1000.0" y="-1000.0"/>
     <point id="1" x="725.0" y="77.0"/>
     <point id="0" x="674.0" y="34.0"/>
   </points>
   <triangles>
-    <triangle a="61" b="18" c="20" id="44"/>
-    <triangle a="60" b="12" c="13" id="43"/>
-    <triangle a="13" b="55" c="59" id="42"/>
-    <triangle a="55" b="11" c="13" id="41"/>
-    <triangle a="58" b="59" c="55" id="40"/>
-    <triangle a="56" b="54" c="57" id="39"/>
-    <triangle a="11" b="54" c="55" id="38"/>
-    <triangle a="12" b="10" c="8" id="37"/>
-    <triangle a="48" b="52" c="53" id="36"/>
-    <triangle a="47" b="52" c="48" id="35"/>
-    <triangle a="49" b="51" c="50" id="34"/>
-    <triangle a="48" b="46" c="50" id="33"/>
-    <triangle a="46" b="49" c="50" id="32"/>
-    <triangle a="46" b="47" c="48" id="31"/>
-    <triangle a="32" b="43" c="30" id="30"/>
-    <triangle a="42" b="43" c="32" id="29"/>
-    <triangle a="32" b="41" c="42" id="28"/>
-    <triangle a="39" b="40" c="27" id="27"/>
-    <triangle a="27" b="38" c="39" id="26"/>
-    <triangle a="31" b="35" c="37" id="25"/>
-    <triangle a="29" b="37" c="31" id="24"/>
-    <triangle a="36" b="31" c="33" id="23"/>
-    <triangle a="33" b="34" c="35" id="22"/>
-    <triangle a="32" b="33" c="31" id="21"/>
-    <triangle a="31" b="32" c="30" id="20"/>
-    <triangle a="29" b="28" c="31" id="19"/>
-    <triangle a="28" b="30" c="31" id="18"/>
-    <triangle a="26" b="28" c="29" id="17"/>
-    <triangle a="25" b="26" c="27" id="16"/>
-    <triangle a="24" b="15" c="16" id="15"/>
-    <triangle a="16" b="24" c="22" id="14"/>
-    <triangle a="23" b="16" c="20" id="13"/>
-    <triangle a="20" b="21" c="22" id="12"/>
-    <triangle a="16" b="20" c="18" id="11"/>
-    <triangle a="17" b="18" c="19" id="10"/>
-    <triangle a="15" b="16" c="17" id="9"/>
-    <triangle a="14" b="0" c="2" id="8"/>
-    <triangle a="13" b="11" c="12" id="7"/>
-    <triangle a="10" b="11" c="12" id="6"/>
-    <triangle a="8" b="9" c="10" id="5"/>
-    <triangle a="1" b="2" c="4" id="4"/>
-    <triangle a="7" b="3" c="4" id="3"/>
-    <triangle a="5" b="3" c="6" id="2"/>
-    <triangle a="1" b="3" c="4" id="1"/>
-    <triangle a="0" b="1" c="2" id="0"/>
+    <triangle a="85" b="214" c="12" id="168"/>
+    <triangle a="85" b="80" c="83" id="167"/>
+    <triangle a="148" b="211" c="176" id="166"/>
+    <triangle a="78" b="210" c="100" id="165"/>
+    <triangle a="29" b="40" c="37" id="164"/>
+    <triangle a="120" b="209" c="35" id="163"/>
+    <triangle a="201" b="208" c="207" id="162"/>
+    <triangle a="201" b="207" c="202" id="161"/>
+    <triangle a="120" b="206" c="119" id="160"/>
+    <triangle a="9" b="205" c="204" id="159"/>
+    <triangle a="204" b="4" c="9" id="158"/>
+    <triangle a="204" b="4" c="1" id="157"/>
+    <triangle a="1" b="0" c="204" id="156"/>
+    <triangle a="204" b="0" c="14" id="155"/>
+    <triangle a="14" b="204" c="188" id="154"/>
+    <triangle a="204" b="188" c="10" id="153"/>
+    <triangle a="203" b="122" c="124" id="152"/>
+    <triangle a="202" b="201" c="123" id="151"/>
+    <triangle a="201" b="123" c="122" id="150"/>
+    <triangle a="200" b="161" c="167" id="149"/>
+    <triangle a="198" b="142" c="199" id="148"/>
+    <triangle a="179" b="196" c="197" id="147"/>
+    <triangle a="193" b="194" c="195" id="146"/>
+    <triangle a="1" b="191" c="3" id="145"/>
+    <triangle a="3" b="191" c="192" id="144"/>
+    <triangle a="11" b="190" c="188" id="143"/>
+    <triangle a="190" b="54" c="128" id="142"/>
+    <triangle a="128" b="190" c="71" id="141"/>
+    <triangle a="188" b="190" c="71" id="140"/>
+    <triangle a="14" b="71" c="188" id="139"/>
+    <triangle a="188" b="11" c="10" id="138"/>
+    <triangle a="57" b="145" c="144" id="137"/>
+    <triangle a="127" b="145" c="187" id="136"/>
+    <triangle a="126" b="186" c="127" id="135"/>
+    <triangle a="183" b="184" c="185" id="134"/>
+    <triangle a="180" b="181" c="182" id="133"/>
+    <triangle a="147" b="125" c="178" id="132"/>
+    <triangle a="135" b="32" c="30" id="131"/>
+    <triangle a="178" b="125" c="90" id="130"/>
+    <triangle a="90" b="178" c="88" id="129"/>
+    <triangle a="88" b="90" c="179" id="128"/>
+    <triangle a="176" b="178" c="88" id="127"/>
+    <triangle a="177" b="77" c="76" id="126"/>
+    <triangle a="76" b="88" c="176" id="125"/>
+    <triangle a="174" b="143" c="140" id="124"/>
+    <triangle a="173" b="172" c="142" id="123"/>
+    <triangle a="172" b="142" c="143" id="122"/>
+    <triangle a="163" b="138" c="156" id="121"/>
+    <triangle a="85" b="12" c="8" id="120"/>
+    <triangle a="151" b="147" c="146" id="119"/>
+    <triangle a="51" b="134" c="135" id="118"/>
+    <triangle a="51" b="135" c="64" id="117"/>
+    <triangle a="64" b="113" c="135" id="116"/>
+    <triangle a="112" b="67" c="64" id="115"/>
+    <triangle a="67" b="108" c="112" id="114"/>
+    <triangle a="153" b="130" c="152" id="113"/>
+    <triangle a="171" b="170" c="93" id="112"/>
+    <triangle a="92" b="103" c="170" id="111"/>
+    <triangle a="92" b="139" c="93" id="110"/>
+    <triangle a="52" b="96" c="169" id="109"/>
+    <triangle a="53" b="50" c="48" id="108"/>
+    <triangle a="167" b="168" c="38" id="107"/>
+    <triangle a="38" b="165" c="166" id="106"/>
+    <triangle a="162" b="164" c="160" id="105"/>
+    <triangle a="160" b="162" c="163" id="104"/>
+    <triangle a="156" b="160" c="161" id="103"/>
+    <triangle a="158" b="159" c="129" id="102"/>
+    <triangle a="129" b="156" c="157" id="101"/>
+    <triangle a="155" b="126" c="128" id="100"/>
+    <triangle a="71" b="155" c="128" id="99"/>
+    <triangle a="95" b="152" c="153" id="98"/>
+    <triangle a="97" b="150" c="151" id="97"/>
+    <triangle a="147" b="148" c="149" id="96"/>
+    <triangle a="24" b="146" c="147" id="95"/>
+    <triangle a="15" b="98" c="24" id="94"/>
+    <triangle a="79" b="20" c="84" id="93"/>
+    <triangle a="104" b="103" c="102" id="92"/>
+    <triangle a="139" b="105" c="92" id="91"/>
+    <triangle a="138" b="145" c="139" id="90"/>
+    <triangle a="144" b="139" c="145" id="89"/>
+    <triangle a="141" b="142" c="143" id="88"/>
+    <triangle a="5" b="140" c="75" id="87"/>
+    <triangle a="116" b="114" c="34" id="86"/>
+    <triangle a="122" b="116" c="117" id="85"/>
+    <triangle a="123" b="116" c="122" id="84"/>
+    <triangle a="117" b="119" c="34" id="83"/>
+    <triangle a="134" b="26" c="25" id="82"/>
+    <triangle a="138" b="139" c="129" id="81"/>
+    <triangle a="134" b="26" c="28" id="80"/>
+    <triangle a="28" b="30" c="134" id="79"/>
+    <triangle a="134" b="135" c="30" id="78"/>
+    <triangle a="133" b="25" c="134" id="77"/>
+    <triangle a="93" b="129" c="130" id="76"/>
+    <triangle a="54" b="128" c="126" id="75"/>
+    <triangle a="126" b="127" c="57" id="74"/>
+    <triangle a="90" b="32" c="125" id="73"/>
+    <triangle a="33" b="114" c="34" id="72"/>
+    <triangle a="122" b="124" c="117" id="71"/>
+    <triangle a="120" b="35" c="121" id="70"/>
+    <triangle a="34" b="120" c="119" id="69"/>
+    <triangle a="116" b="34" c="117" id="68"/>
+    <triangle a="111" b="113" c="112" id="67"/>
+    <triangle a="108" b="112" c="111" id="66"/>
+    <triangle a="110" b="111" c="108" id="65"/>
+    <triangle a="107" b="108" c="109" id="64"/>
+    <triangle a="104" b="105" c="106" id="63"/>
+    <triangle a="101" b="102" c="103" id="62"/>
+    <triangle a="94" b="100" c="98" id="61"/>
+    <triangle a="99" b="94" c="96" id="60"/>
+    <triangle a="96" b="97" c="98" id="59"/>
+    <triangle a="94" b="95" c="96" id="58"/>
+    <triangle a="77" b="83" c="8" id="57"/>
+    <triangle a="8" b="85" c="83" id="56"/>
+    <triangle a="16" b="18" c="17" id="55"/>
+    <triangle a="83" b="84" c="79" id="54"/>
+    <triangle a="80" b="83" c="79" id="53"/>
+    <triangle a="81" b="82" c="78" id="52"/>
+    <triangle a="78" b="79" c="80" id="51"/>
+    <triangle a="74" b="76" c="77" id="50"/>
+    <triangle a="8" b="77" c="74" id="49"/>
+    <triangle a="75" b="76" c="74" id="48"/>
+    <triangle a="74" b="6" c="75" id="47"/>
+    <triangle a="5" b="75" c="6" id="46"/>
+    <triangle a="8" b="74" c="6" id="45"/>
+    <triangle a="6" b="9" c="8" id="44"/>
+    <triangle a="9" b="4" c="6" id="43"/>
+    <triangle a="70" b="52" c="69" id="42"/>
+    <triangle a="69" b="70" c="67" id="41"/>
+    <triangle a="53" b="69" c="52" id="40"/>
+    <triangle a="66" b="67" c="64" id="39"/>
+    <triangle a="51" b="64" c="65" id="38"/>
+    <triangle a="50" b="63" c="51" id="37"/>
+    <triangle a="60" b="12" c="13" id="36"/>
+    <triangle a="13" b="55" c="59" id="35"/>
+    <triangle a="55" b="11" c="13" id="34"/>
+    <triangle a="58" b="59" c="55" id="33"/>
+    <triangle a="56" b="54" c="57" id="32"/>
+    <triangle a="11" b="54" c="55" id="31"/>
+    <triangle a="12" b="10" c="8" id="30"/>
+    <triangle a="48" b="52" c="53" id="29"/>
+    <triangle a="47" b="52" c="48" id="28"/>
+    <triangle a="49" b="51" c="50" id="27"/>
+    <triangle a="48" b="46" c="50" id="26"/>
+    <triangle a="46" b="49" c="50" id="25"/>
+    <triangle a="46" b="47" c="48" id="24"/>
+    <triangle a="39" b="40" c="27" id="23"/>
+    <triangle a="27" b="38" c="39" id="22"/>
+    <triangle a="31" b="35" c="37" id="21"/>
+    <triangle a="29" b="37" c="31" id="20"/>
+    <triangle a="36" b="31" c="33" id="19"/>
+    <triangle a="33" b="34" c="35" id="18"/>
+    <triangle a="32" b="33" c="31" id="17"/>
+    <triangle a="31" b="32" c="30" id="16"/>
+    <triangle a="29" b="28" c="31" id="15"/>
+    <triangle a="28" b="30" c="31" id="14"/>
+    <triangle a="26" b="28" c="29" id="13"/>
+    <triangle a="25" b="26" c="27" id="12"/>
+    <triangle a="24" b="15" c="16" id="11"/>
+    <triangle a="16" b="24" c="22" id="10"/>
+    <triangle a="23" b="16" c="20" id="9"/>
+    <triangle a="20" b="21" c="22" id="8"/>
+    <triangle a="16" b="20" c="18" id="7"/>
+    <triangle a="15" b="16" c="17" id="6"/>
+    <triangle a="13" b="11" c="12" id="5"/>
+    <triangle a="10" b="11" c="12" id="4"/>
+    <triangle a="8" b="9" c="10" id="3"/>
+    <triangle a="7" b="3" c="4" id="2"/>
+    <triangle a="5" b="3" c="6" id="1"/>
+    <triangle a="1" b="3" c="4" id="0"/>
   </triangles>
 </ylop>

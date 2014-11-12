@@ -52,7 +52,7 @@ public class ControlFrame extends PApplet {
             .addItem(g2)
               .addItem(g3)
                 .addItem(g4)
-                  .setItemHeight(120)
+                  .setItemHeight(150)
                   ;
 
 
@@ -65,7 +65,7 @@ public class ControlFrame extends PApplet {
     cp5.addToggle("Display Circles").setPosition(10, 10).setSize(10, 10).setGroup(g1).plugTo(parent, "displayCircle").setValue(true);
     cp5.addToggle("Display Color").setPosition(10, 30).setSize(10, 10).setGroup(g1).plugTo(parent, "displayColor");
     cp5.addToggle("Triangles Only").setPosition(10, 50).setSize(10, 10).setGroup(g1).plugTo(parent, "trianglesOnly");
-    cp5.addToggle("Display Epicenter").setPosition(10, 70).setSize(10, 10).setGroup(g1).plugTo(parent, "displayEpicenter").setValue(true);
+    cp5.addToggle("Display Epicenter").setPosition(10, 70).setSize(10, 10).setGroup(g1).plugTo(parent, "displayEpicenter").setValue(false);
 
 
 
@@ -90,10 +90,12 @@ public class ControlFrame extends PApplet {
 
     //settings 
     cp5.addSlider("Min dist").setPosition(10, 10).setRange(0, 30).setValue(15).setGroup(g3).plugTo(parent, "minDistCollapse");
-    cp5.addSlider("X").setPosition(10, 30).setRange(0, 1000).setValue(0).setGroup(g3).plugTo(parent, "epicenterX");
-    cp5.addSlider("Y").setPosition(10, 50).setRange(0, 1000).setValue(0).setGroup(g3).plugTo(parent, "epicenterY");
-    cp5.addSlider("alphaDist").setPosition(10, 70).setRange(0, 500).setValue(100).setGroup(g3).plugTo(parent, "alphaDist");
+    cp5.addSlider("X").setPosition(10, 30).setRange(0, 1200).setValue(0).setGroup(g3).plugTo(parent, "epicenterX");
+    cp5.addSlider("Y").setPosition(10, 50).setRange(0, 1200).setValue(0).setGroup(g3).plugTo(parent, "epicenterY");
+    cp5.addSlider("alphaDist").setPosition(10, 70).setRange(0, 800).setValue(100).setGroup(g3).plugTo(parent, "alphaDist");
     cp5.addSlider("randomAlpha").setPosition(10, 90).setRange(0, 255).setValue(50).setGroup(g3).plugTo(parent, "randomAlpha");
+    cp5.addSlider("linesDivisionFactor").setPosition(10, 110).setRange(0, 1).setValue(0.7).setGroup(g3).plugTo(parent, "linesDivisionFactor");
+    cp5.addSlider("linesOffset").setPosition(10, 130).setRange(0, 255).setValue(50).setGroup(g3).plugTo(parent, "linesOffset");
   
     //save and load xml
   cp5.addButton("Save data").setValue(100).setPosition(10,10).setSize(150,20).setGroup(g4)
