@@ -30,6 +30,15 @@ public void SaveData()
   XML memo = xml.addChild("settings");
   XML newChild = memo.addChild("name");
   newChild.setContent("My custom name baseImage");
+  
+  //adding time
+  newChild = memo.addChild("time");
+  newChild.setString("year", year()+"");
+  newChild.setString("month", month()+"");
+  newChild.setString("day", day()+"");
+  newChild.setString("hour", hour()+"");
+  newChild.setString("minute", minute()+"");
+  newChild.setString("second", second()+"");
 
   //insert the points
   XML pointsChild = xml.addChild("points");
@@ -58,5 +67,41 @@ public void SaveData()
   saveXML(xml, "/data/points-"+currentTime+".xml");
   saveXML(xml, "/data/points.xml");
   println("XML Saved.");
+
+}
+
+
+public void LoadData()
+{
+
+  ResetCanvas();
+  xml = loadXML("points.xml");
+  XML[] pointsChildren = xml.getChildren("points");
+  XML[] pointChildren = pointsChildren[0].getChildren("point");
+
+  allPointsPos = new ArrayList<PVector>();
+
+  for (int i = pointChildren.length-1; i >=0; i--) {
+    int id = pointChildren[i].getInt("id");
+    PVector position = new PVector(pointChildren[i].getFloat("x"), pointChildren[i].getFloat("y"));
+    allPointsPos.add(id,position);
+  }
+
+
+  XML[] trianglesChildren = xml.getChildren("triangles");
+  XML[] triangleChildren = trianglesChildren[0].getChildren("triangle");
+
+  triangles = new ArrayList<Tri>();
+  for (int i = triangleChildren.length-1; i >=0; i--) {
+    int id = triangleChildren[i].getInt("id");
+    int[] idPoints = new int[3];
+    idPoints[0] = triangleChildren[i].getInt("a");
+    idPoints[1] = triangleChildren[i].getInt("b");
+    idPoints[2] = triangleChildren[i].getInt("c");
+    Tri newTri = new Tri(baseImage, idPoints);
+    triangles.add(id,newTri);
+  }
+
+  println("XML loaded ");
 
 }
