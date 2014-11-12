@@ -304,17 +304,27 @@ void mouseDeletePoint()
       for (int i = triangles.size ()-1; i >= 0; i--)
       {
         Tri tri = triangles.get(i);
-
+        
         for(int j = 0; j < 3; j++) {
           if(tri.triPoints[j] == pointToDelete)
           {
-              println("delete point: "+ i);
-              if(tri != null) triangles.remove(i);
+             println( j +"-"+tri.triPoints[j]);
+
+              if(tri != null) {
+                println(tri.triPoints[0]);
+
+                triangles.remove(i);
+                println("delete triangle: "+ i);
+              }
           }
         }
       }
+      
       //remove the point;
-      allPointsPos.remove(pointToDelete);
+      PVector removeInt = new PVector(-1000,-1000);
+      allPointsPos.set(pointToDelete, removeInt);
+      println("remove point: "+ pointToDelete);
+
       pointToDelete = -1;
     }
 }
@@ -465,38 +475,3 @@ allPointsPos.clear();
 */
 }
 
-
-public void LoadData()
-{
-
-  ResetCanvas();
-  xml = loadXML("points.xml");
-  XML[] pointsChildren = xml.getChildren("points");
-  XML[] pointChildren = pointsChildren[0].getChildren("point");
-
-  allPointsPos = new ArrayList<PVector>();
-
-  for (int i = pointChildren.length-1; i >=0; i--) {
-    int id = pointChildren[i].getInt("id");
-    PVector position = new PVector(pointChildren[i].getFloat("x"), pointChildren[i].getFloat("y"));
-    allPointsPos.add(id,position);
-  }
-
-
-  XML[] trianglesChildren = xml.getChildren("triangles");
-  XML[] triangleChildren = trianglesChildren[0].getChildren("triangle");
-
-  triangles = new ArrayList<Tri>();
-  for (int i = triangleChildren.length-1; i >=0; i--) {
-    int id = triangleChildren[i].getInt("id");
-    int[] idPoints = new int[3];
-    idPoints[0] = triangleChildren[i].getInt("a");
-    idPoints[1] = triangleChildren[i].getInt("b");
-    idPoints[2] = triangleChildren[i].getInt("c");
-    Tri newTri = new Tri(baseImage, idPoints);
-    triangles.add(id,newTri);
-  }
-
-  println("XML loaded ");
-
-}

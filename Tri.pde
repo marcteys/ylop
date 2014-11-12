@@ -36,12 +36,20 @@ class Tri {
       fill(triangleColor,triangleAlpha());/*
       stroke(255,0,0);
       line(epicenterX,epicenterY,centerPos.x,centerPos.y);*/
-      stroke(255);
+      stroke(255,255-triangleAlpha());
     }
-    triangle(
-      allPointsPos.get(triPoints[0]).x, allPointsPos.get(triPoints[0]).y,
-      allPointsPos.get(triPoints[1]).x, allPointsPos.get(triPoints[1]).y,
-      allPointsPos.get(triPoints[2]).x, allPointsPos.get(triPoints[2]).y);
+
+    
+    //println( triPoints[0] + " debug - " + allPointsPos.get(triPoints[0]));
+    
+  // try{
+     triangle(
+        allPointsPos.get(triPoints[0]).x, allPointsPos.get(triPoints[0]).y,
+        allPointsPos.get(triPoints[1]).x, allPointsPos.get(triPoints[1]).y,
+        allPointsPos.get(triPoints[2]).x, allPointsPos.get(triPoints[2]).y);
+  //  } catch(IndexOutOfBoundsException e){
+  //    println(e);
+  //  }
 
     if (debugColor) ed.debug = true;
     else if (!debugColor) ed.debug = false;
