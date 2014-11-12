@@ -65,7 +65,7 @@ class Tri {
     float alpha;
     
     float distanceFromEpicenter =  dist(centerPos.x, centerPos.y, epicenterX, epicenterY);
-    alpha = constrain(map(distanceFromEpicenter,0+alphaDist,50+alphaDist,255,0),0,255);
+    alpha = constrain(map(distanceFromEpicenter,0+alphaDist,distanceOffsetEpicenter+alphaDist,255,0),0,255);
 
     //adding random
 

@@ -35,6 +35,7 @@ float minDistCollapse = 15;
 //values visual
 public int epicenterX = 150;
 public int epicenterY = 200;
+public int distanceOffsetEpicenter =50;
 public int alphaDist = 20;
 public int randomAlpha = 50;
 
