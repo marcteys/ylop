@@ -21,12 +21,15 @@ You can now create some points on your canvas ! When you are ready, play with th
 * Display circles : *Display the points*
 * Display color : *Show the average color of the current triangle*
 * Triangles only : *Display only the triangles*
-* Display epicenter : *Display the point used as reference for
+* Display epicenter : *Display the point used for the visual stuff*
+
+
+
 ### Modes
-1 : Triangle creation - *Click on the picture to create some points, they are automatically linked to each other to create a triangle.*
-2 : Auto triangle - *Click one time on the picture, a new triangle is created, linked to the two nearst points*
-3 : Move - *Select a point and drag to move it*
-4 : Delete  - *Delete a point (and the triangles connected to this one)*
+1. Triangle creation - *Click on the picture to create some points, they are automatically linked to each other to create a triangle.*
+2. Auto triangle - *Click one time on the picture, a new triangle is created, linked to the two nearst points*
+3. Move - *Select a point and drag to move it*
+4. Delete  - *Delete a point (and the triangles connected to this one)*
 
 ### Visual options
 
