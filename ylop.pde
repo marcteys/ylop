@@ -61,14 +61,14 @@ PImage baseImage;
 
 
 void setup() {  // setup() runs once
-  size(1200, 800);
+  size(1064, 600);
   frameRate(30);
   smooth();
   rectMode(CENTER);
 
   allPointsPos = new ArrayList<PVector>();
   triangles = new ArrayList<Tri>();
-  baseImage = loadImage("base.jpg");
+  baseImage = loadImage("a.jpg");
 
   // CP5
   cp5 = new ControlP5(this);
